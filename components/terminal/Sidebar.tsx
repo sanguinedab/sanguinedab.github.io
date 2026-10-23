@@ -2,23 +2,34 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { nav, site } from "@/lib/content";
+import { nav } from "@/lib/content";
+import type { Profile } from "@/lib/types";
 
-export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function Sidebar({
+  open,
+  collapsed,
+  onClose,
+  profile,
+}: {
+  open: boolean;
+  collapsed: boolean;
+  onClose: () => void;
+  profile: Profile;
+}) {
   const pathname = usePathname();
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <aside className={`sidebar ${open ? "is-open" : ""}`}>
+    <aside className={`sidebar ${open ? "is-open" : ""} ${collapsed ? "collapsed" : ""}`}>
       <div className="border-b border-line px-5 py-5">
         <div className="flex items-center gap-3">
           <div className="glow flex h-11 w-11 items-center justify-center rounded border border-line bg-panel text-lg font-bold text-accent">
-            {site.monogram}
+            {profile.monogram}
           </div>
           <div className="min-w-0">
-            <div className="truncate text-sm font-semibold text-fg">{site.nameEn}</div>
-            <div className="truncate text-xs text-muted">~/{site.handle}</div>
+            <div className="truncate text-sm font-semibold text-fg">{profile.nameEn}</div>
+            <div className="truncate text-xs text-muted">~/{profile.handle}</div>
           </div>
         </div>
       </div>
@@ -30,6 +41,7 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
         <ul className="space-y-0.5">
           {nav.map((n) => {
             const active = isActive(n.href);
+            const label = n.href === "/" ? `Hi ${profile.name}` : n.label;
             return (
               <li key={n.href}>
                 <Link
@@ -48,7 +60,7 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
                     >
                       {active ? "▸" : "›"}
                     </span>
-                    {n.label}
+                    {label}
                   </span>
                   <span className="text-[11px] text-muted">{n.hint}</span>
                 </Link>
@@ -59,7 +71,7 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
       </nav>
 
       <div className="border-t border-line px-5 py-4 text-[11px] text-muted">
-        <p className="truncate">{site.email}</p>
+        <p className="truncate">{profile.email}</p>
         <p className="mt-1 text-green/70">build v1.0 · stable</p>
       </div>
     </aside>

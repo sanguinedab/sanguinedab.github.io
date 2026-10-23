@@ -1,5 +1,6 @@
-import { Hero } from "@/components/terminal/Hero";
+import { AiChat } from "@/components/terminal/AiChat";
+import { profile } from "@/lib/md";
 
 export default function Home() {
-  return <Hero />;
+  return <AiChat name={profile.name} />;
 }

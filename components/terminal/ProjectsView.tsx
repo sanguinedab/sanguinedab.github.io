@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { projects } from "@/lib/content";
+import type { Project } from "@/lib/types";
 
-export function ProjectsView() {
+export function ProjectsView({ projects }: { projects: Project[] }) {
   const [i, setI] = useState(0);
   const count = projects.length;
   const p = projects[i];

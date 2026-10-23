@@ -11,9 +11,9 @@
   --color-muted: #43835a;
   --color-fg: #b0ffa0;
 
-  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", "JetBrains Mono",
-    Menlo, Consolas, "Liberation Mono", monospace, "PingFang SC",
-    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas,
+    "Liberation Mono", monospace, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Noto Sans SC", sans-serif;
 }
 
 :root {
@@ -80,6 +80,11 @@
   background: var(--color-chrome);
   border-right: 1px solid var(--color-line);
   overflow-y: auto;
+  transition: transform 0.25s ease;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-100%);
 }
 
 .statusbar {
@@ -103,6 +108,11 @@
   padding-top: var(--titlebar-h);
   padding-bottom: var(--statusbar-h);
   min-height: 100vh;
+  transition: margin-left 0.25s ease;
+}
+
+.terminal-main.collapsed {
+  margin-left: 0;
 }
 
 /* ---- CRT 复古效果 ---- */
@@ -166,6 +176,45 @@
 }
 .fade-up {
   animation: fade-up 0.4s ease both;
+}
+
+/* ---- Markdown 正文排版 ---- */
+.md > * + * {
+  margin-top: 0.7em;
+}
+.md a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.md strong,
+.md b {
+  color: #eafff0;
+  font-weight: 700;
+}
+.md em,
+.md i {
+  color: var(--color-fg);
+}
+.md ul,
+.md ol {
+  padding-left: 1.4em;
+}
+.md ul {
+  list-style: none;
+}
+.md ul > li::before {
+  content: "▸ ";
+  color: var(--color-accent);
+}
+.md code {
+  color: var(--color-accent);
+}
+.md h1,
+.md h2,
+.md h3 {
+  color: #eafff0;
+  font-weight: 700;
 }
 
 /* ---- 响应式：移动端收起侧栏为抽屉 ---- */

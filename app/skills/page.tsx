@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/terminal/PageHeader";
-import { skills } from "@/lib/content";
+import { skills } from "@/lib/md";
 
 export default function SkillsPage() {
   return (
