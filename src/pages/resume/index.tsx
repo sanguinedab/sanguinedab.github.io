@@ -16,7 +16,7 @@ import { skills } from "@/data/skills";
 import { personalProjects, workProjects } from "@/data/workProjects";
 
 const SUMMARY =
-  "5 年后端与 DevOps 经验：从统一身份认证、DevOps 告警、AIGC、工业质检一路做到 Kubernetes 训练平台；目前负责企业 RAG 问答平台的架构、开发与交付。熟悉 Go / Python、Kubernetes、可观测性与 CI/CD，近期专注 AI Agent 与 MCP 落地。";
+  "5 年服务端与 DevOps 经验：从统一身份认证、DevOps 告警、AIGC、工业质检一路做到 Kubernetes 训练平台；目前负责企业 RAG 问答平台的架构、开发与交付。熟悉 Go / Python、Kubernetes、可观测性与 CI/CD，近期专注 AI Agent 与 MCP 落地。";
 
 const HIGHLIGHTS = ["5 年经验", "Go / Python", "Kubernetes", "CI/CD", "AI Agent"];
 
@@ -234,7 +234,7 @@ function TimelineItem({
     <div className="relative break-inside-avoid">
       <span
         aria-hidden
-        className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-white"
+        className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full bg-zinc-900 ring-4 ring-white"
       />
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="text-[15px] font-semibold">{project.title}</h3>

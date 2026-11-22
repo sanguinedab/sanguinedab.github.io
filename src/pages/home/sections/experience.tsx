@@ -21,7 +21,6 @@ export default function ExperienceSection() {
           title: item.school,
           period: item.years,
           subtitle: item.degree,
-          points: item.points,
         }))}
       />
 
@@ -61,7 +60,7 @@ function TimelineGroup({
             <div key={`${entry.title}-${entry.period}`} className="relative">
               <span
                 aria-hidden
-                className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-background"
+                className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full bg-black ring-2 ring-white/25"
               />
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h3 className="text-lg font-semibold">{entry.title}</h3>
