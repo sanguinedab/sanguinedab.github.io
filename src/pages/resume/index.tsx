@@ -1,24 +1,34 @@
-import type { ReactNode } from "react";
+import { useRef, useState } from "react";
+import type { ChangeEvent, ComponentType, ReactNode } from "react";
 import { Link } from "react-router";
 import {
   FaArrowLeft,
+  FaBriefcase,
+  FaDiagramProject,
+  FaEye,
   FaGithub,
   FaGlobe,
+  FaGraduationCap,
+  FaImage,
+  FaLaptopCode,
   FaLocationDot,
+  FaPen,
   FaPrint,
   FaRegEnvelope,
+  FaRotateLeft,
+  FaScrewdriverWrench,
 } from "react-icons/fa6";
 
 import { Button } from "@/components/ui/button";
 import { usePageTitle } from "@/hooks/use-pagetitle";
+import { education } from "@/data/education";
 import { profile } from "@/data/profile";
 import { skills } from "@/data/skills";
+import { workExperience } from "@/data/workExperience";
 import { personalProjects, workProjects } from "@/data/workProjects";
 
 const SUMMARY =
   "5 年服务端与 DevOps 经验：从统一身份认证、DevOps 告警、AIGC、工业质检一路做到 Kubernetes 训练平台；目前负责企业 RAG 问答平台的架构、开发与交付。熟悉 Go / Python、Kubernetes、可观测性与 CI/CD，近期专注 AI Agent 与 MCP 落地。";
-
-const HIGHLIGHTS = ["5 年经验", "Go / Python", "Kubernetes", "CI/CD", "AI Agent"];
 
 const CONTACTS = [
   { icon: FaLocationDot, text: profile.location },
@@ -34,6 +44,11 @@ const CONTACTS = [
 export default function ResumePage() {
   usePageTitle("简历");
 
+  const sheetRef = useRef<HTMLElement>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [editing, setEditing] = useState(true);
+  const [avatar, setAvatar] = useState(profile.profileImage);
+
   const handlePrint = () => {
     const previousTitle = document.title;
     document.title = `${profile.name}-简历`;
@@ -46,10 +61,17 @@ export default function ResumePage() {
     window.setTimeout(restore, 1500);
   };
 
+  const handleAvatar = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setAvatar(URL.createObjectURL(file));
+    event.target.value = "";
+  };
+
   return (
-    <div className="resume-page min-h-screen bg-zinc-100 text-zinc-900 print:bg-white">
-      <div className="no-print sticky top-0 z-10 border-b border-zinc-200 bg-white/85 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-[210mm] flex-wrap items-center justify-between gap-3 px-4 py-3">
+    <div className="resume-page min-h-screen bg-white text-zinc-900 print:bg-white">
+      <div className="no-print sticky top-0 z-10 border-b border-zinc-200 bg-white/90 backdrop-blur">
+        <div className="mx-auto flex w-full max-w-[210mm] flex-wrap items-center justify-between gap-2 px-4 py-3">
           <Link
             to="/"
             className="inline-flex items-center gap-1.5 text-sm text-zinc-600 transition-colors hover:text-zinc-900"
@@ -57,111 +79,196 @@ export default function ResumePage() {
             <FaArrowLeft className="h-3.5 w-3.5" />
             返回首页
           </Link>
-          <div className="flex items-center gap-3">
-            <span className="hidden text-xs text-zinc-500 sm:inline">
-              在打印对话框里选择「另存为 PDF」
+
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="hidden text-xs text-zinc-500 lg:inline">
+              直接点文字修改，内容只留在本地，不会上传
             </span>
-            <Button type="button" size="sm" onClick={handlePrint} className="gap-1.5">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setEditing((value) => !value)}
+              className="gap-1.5"
+            >
+              {editing ? (
+                <>
+                  <FaEye className="h-3.5 w-3.5" />
+                  预览
+                </>
+              ) : (
+                <>
+                  <FaPen className="h-3.5 w-3.5" />
+                  编辑
+                </>
+              )}
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => fileRef.current?.click()}
+              className="gap-1.5"
+            >
+              <FaImage className="h-3.5 w-3.5" />
+              头像
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => window.location.reload()}
+              className="gap-1.5"
+            >
+              <FaRotateLeft className="h-3.5 w-3.5" />
+              重置
+            </Button>
+            <Button
+              type="button"
+              size="sm"
+              onClick={handlePrint}
+              className="gap-1.5"
+            >
               <FaPrint className="h-3.5 w-3.5" />
               导出 PDF
             </Button>
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleAvatar}
+            />
           </div>
         </div>
       </div>
 
       <main className="mx-auto w-full max-w-[210mm] px-4 py-8 print:p-0">
-        <article className="resume-sheet mx-auto w-full bg-white px-8 py-8 shadow-xl print:px-0 print:py-0 print:shadow-none">
-          <header className="rounded-xl bg-slate-900 px-7 py-6 text-white">
-            <div className="flex flex-wrap items-start justify-between gap-x-8 gap-y-5">
-              <div className="min-w-0">
-                <h1 className="text-4xl font-bold tracking-tight">
+        <article
+          ref={sheetRef}
+          contentEditable={editing}
+          suppressContentEditableWarning
+          onClick={(event) => {
+            if (editing && (event.target as HTMLElement).closest("a")) {
+              event.preventDefault();
+            }
+          }}
+          className={`resume-sheet mx-auto w-full border border-zinc-200 bg-white px-10 py-9 text-zinc-900 shadow-sm print:border-0 print:px-0 print:py-0 print:shadow-none ${
+            editing ? "resume-editable" : ""
+          }`}
+        >
+          <header className="flex flex-col gap-5 border-b border-zinc-200 pb-5 sm:flex-row sm:items-center">
+            <div
+              contentEditable={false}
+              className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border-4 border-zinc-100 bg-zinc-50"
+            >
+              <img
+                src={avatar}
+                alt={profile.name}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h1 className="text-3xl font-bold tracking-tight">
                   {profile.name}
                 </h1>
-                <p className="mt-1.5 text-sm font-medium tracking-wide text-emerald-400">
-                  {profile.headline}
-                </p>
-                <p className="mt-4 max-w-xl text-[12.5px] leading-snug text-slate-300">
-                  {SUMMARY}
-                </p>
+                <span className="text-[11px] text-zinc-400">
+                  更新于 {new Date().toLocaleDateString("zh-CN")}
+                </span>
               </div>
-
-              <ul className="space-y-1.5 text-xs text-slate-300">
+              <p className="mt-1 text-sm font-medium text-slate-600">
+                {profile.headline}
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-zinc-600">
+                {SUMMARY}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-zinc-600">
                 {CONTACTS.map((item) => (
-                  <li key={item.text} className="flex items-center gap-2">
-                    <item.icon className="h-3.5 w-3.5 shrink-0 text-emerald-400" />
+                  <span key={item.text} className="inline-flex items-center gap-1.5">
+                    <item.icon className="h-3.5 w-3.5 text-zinc-400" />
                     {item.href ? (
-                      <a href={item.href} className="hover:text-white">
+                      <a href={item.href} className="hover:text-zinc-900">
                         {item.text}
                       </a>
                     ) : (
-                      <span>{item.text}</span>
+                      item.text
                     )}
-                  </li>
+                  </span>
                 ))}
-              </ul>
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2 border-t border-white/10 pt-3">
-              {HIGHLIGHTS.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/15 px-2.5 py-0.5 text-[11px] text-slate-200"
-                >
-                  {item}
-                </span>
-              ))}
+              </div>
             </div>
           </header>
 
-          <Section index="01" title="项目经历" className="mt-5">
-            <div className="mt-4 space-y-4 border-l border-zinc-200 pl-6">
-              {workProjects.map((project) => (
-                <TimelineItem key={project.title} project={project} />
-              ))}
-            </div>
-          </Section>
-
-          <Section index="02" title="个人项目" className="mt-5">
-            <div className="mt-3 space-y-3">
-              {personalProjects.map((project) => (
+          <Section icon={FaGraduationCap} title="教育经历">
+            <div className="space-y-3">
+              {education.map((item) => (
                 <div
-                  key={project.title}
-                  className="break-inside-avoid rounded-lg border border-zinc-200 bg-zinc-50/60 px-5 py-3.5"
+                  key={`${item.school}-${item.years}`}
+                  className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"
                 >
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <h3 className="text-[15px] font-semibold">
-                      {project.title}
-                    </h3>
-                    <span className="font-mono text-xs text-emerald-600">
-                      {project.period}
-                    </span>
+                  <div>
+                    <div className="text-[15px] font-semibold">{item.school}</div>
+                    <div className="text-sm text-zinc-500">{item.degree}</div>
                   </div>
-                  <p className="text-xs text-zinc-500">{project.role}</p>
-                  {project.summary ? (
-                    <p className="mt-1 text-sm text-zinc-700">
-                      {project.summary}
-                    </p>
-                  ) : null}
-                  <ul className="mt-1.5 space-y-1">
-                    {project.points?.slice(0, 3).map((point) => (
-                      <li
-                        key={point}
-                        className="flex gap-2 text-[12.5px] leading-snug text-zinc-700"
-                      >
-                        <span aria-hidden className="select-none text-emerald-500">
-                          ▸
-                        </span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <span className="font-mono text-xs text-zinc-500">
+                    {item.years}
+                  </span>
                 </div>
               ))}
             </div>
           </Section>
 
-          <Section index="03" title="技能" className="mt-5">
-            <div className="mt-3 space-y-2.5">
+          <Section icon={FaBriefcase} title="工作经历">
+            <div className="space-y-3.5">
+              {workExperience.map((item) => (
+                <div key={`${item.company}-${item.years}`}>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 className="text-[15px] font-semibold">{item.company}</h3>
+                    <span className="font-mono text-xs text-zinc-500">
+                      {item.years}
+                    </span>
+                  </div>
+                  <p className="text-xs text-zinc-500">{item.title}</p>
+                  {item.points?.length ? (
+                    <ul className="mt-1.5 space-y-1">
+                      {item.points.map((point) => (
+                        <li
+                          key={point}
+                          className="flex gap-2 text-[13px] leading-snug text-zinc-700"
+                        >
+                          <span aria-hidden className="select-none text-zinc-400">
+                            ▸
+                          </span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          <Section icon={FaDiagramProject} title="项目经历">
+            <div className="space-y-3.5">
+              {workProjects.map((project) => (
+                <ProjectItem key={project.title} project={project} />
+              ))}
+            </div>
+          </Section>
+
+          <Section icon={FaLaptopCode} title="个人项目">
+            <div className="space-y-3.5">
+              {personalProjects.map((project) => (
+                <ProjectItem key={project.title} project={project} />
+              ))}
+            </div>
+          </Section>
+
+          <Section icon={FaScrewdriverWrench} title="技能">
+            <div className="space-y-2.5">
               {Object.entries(skills).map(([group, items]) => (
                 <div
                   key={group}
@@ -178,7 +285,7 @@ export default function ResumePage() {
                       >
                         {item.name}
                         {item.proficiency ? (
-                          <span className="text-emerald-600">
+                          <span className="text-zinc-500">
                             {" "}
                             · {item.proficiency}
                           </span>
@@ -202,43 +309,37 @@ export default function ResumePage() {
 }
 
 function Section({
-  index,
+  icon: Icon,
   title,
-  className,
   children,
 }: {
-  index: string;
+  icon: ComponentType<{ className?: string }>;
   title: string;
-  className?: string;
   children: ReactNode;
 }) {
   return (
-    <section className={className}>
-      <div className="flex items-baseline gap-3 border-b border-zinc-900/10 pb-2">
-        <span className="font-mono text-xs font-semibold text-emerald-600">
-          {index}
-        </span>
-        <h2 className="text-base font-bold tracking-wide">{title}</h2>
+    <section className="mt-5">
+      <div className="mb-4 flex items-center rounded-full bg-zinc-100 p-1.5">
+        <div className="flex items-center gap-2 rounded-full bg-slate-700 px-4 py-1.5 text-sm font-semibold text-white">
+          <Icon className="h-4 w-4" />
+          {title}
+        </div>
       </div>
       {children}
     </section>
   );
 }
 
-function TimelineItem({
+function ProjectItem({
   project,
 }: {
   project: (typeof workProjects)[number];
 }) {
   return (
-    <div className="relative break-inside-avoid">
-      <span
-        aria-hidden
-        className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full bg-zinc-900 ring-4 ring-white"
-      />
+    <div className="break-inside-avoid">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="text-[15px] font-semibold">{project.title}</h3>
-        <span className="font-mono text-xs text-emerald-600">
+        <span className="font-mono text-xs text-zinc-500">
           {project.period}
         </span>
       </div>
@@ -250,12 +351,12 @@ function TimelineItem({
       ) : null}
       {project.points?.length ? (
         <ul className="mt-1.5 space-y-1">
-          {project.points.slice(0, 3).map((point) => (
+          {project.points.slice(0, project.title === "企业 RAG 问答平台" ? 3 : 2).map((point) => (
             <li
               key={point}
-              className="flex gap-2 text-[12.5px] leading-snug text-zinc-700"
+              className="flex gap-2 text-[13px] leading-snug text-zinc-700"
             >
-              <span aria-hidden className="select-none text-emerald-500">
+              <span aria-hidden className="select-none text-zinc-400">
                 ▸
               </span>
               <span>{point}</span>
