@@ -1,4 +1,7 @@
-import { FaRegEnvelope, FaLocationDot } from "react-icons/fa6";
+import { FaRegEnvelope, FaLocationDot, FaFileLines } from "react-icons/fa6";
+import { Link } from "react-router";
+
+import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 import {
@@ -71,6 +74,13 @@ function ProfileCard() {
             ))}
           </div>
         </TooltipProvider>
+
+        <Button asChild variant="outline" size="sm" className="gap-1.5">
+          <Link to="/resume">
+            <FaFileLines className="h-3.5 w-3.5" />
+            简历 · 导出 PDF
+          </Link>
+        </Button>
       </div>
     </div>
   );

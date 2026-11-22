@@ -124,3 +124,36 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ---- 简历打印 ---- */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-page {
+    background: #fff !important;
+    min-height: auto !important;
+  }
+
+  .resume-sheet {
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .resume-sheet a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}

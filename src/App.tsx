@@ -15,6 +15,7 @@ const PublicationsPage = loadLazy(() => import("@/pages/publications"));
 const ArticlesPage = loadLazy(() => import("@/pages/articles"));
 const ArticlePage = loadLazy(() => import("@/pages/articles/page"));
 const NotFoundPage = loadLazy(() => import("@/pages/notfound"));
+const ResumePage = loadLazy(() => import("@/pages/resume"));
 
 export default function App() {
   useGlobalMeta();
@@ -24,6 +25,7 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <Routes>
+          <Route path="/resume" element={<ResumePage />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="projects" element={<ProjectsPage />} />
