@@ -21,12 +21,6 @@ sidebar:
         name: LuWrench
         package: "react-icons/lu"
 
-    - title: 校园经历
-      url: "campus"
-      icon:
-        name: LuGraduationCap
-        package: "react-icons/lu"
-
     - title: 文章
       url: "articles"
       icon:
