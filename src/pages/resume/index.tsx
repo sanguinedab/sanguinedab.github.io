@@ -170,14 +170,9 @@ export default function ResumePage() {
             </div>
 
             <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h1 className="text-3xl font-bold tracking-tight">
-                  {profile.name}
-                </h1>
-                <span className="text-[11px] text-zinc-400">
-                  更新于 {new Date().toLocaleDateString("zh-CN")}
-                </span>
-              </div>
+              <h1 className="text-3xl font-bold tracking-tight">
+                {profile.name}
+              </h1>
               <p className="mt-1 text-sm font-medium text-slate-600">
                 {profile.headline}
               </p>
@@ -299,7 +294,6 @@ export default function ResumePage() {
           </Section>
 
           <footer className="mt-6 flex items-center justify-between border-t border-zinc-200 pt-3 text-[11px] text-zinc-400">
-            <span>更新于 {new Date().toLocaleDateString("zh-CN")}</span>
             <span>{profile.name} · 简历</span>
           </footer>
         </article>
