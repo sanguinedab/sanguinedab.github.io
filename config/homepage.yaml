@@ -14,7 +14,7 @@ homepage:
 
     - name: Experience
       variant: default
-      enabled: false # 模板示例履历，等真实经历
+      enabled: true
 
     - name: Publications
       variant: default

@@ -1,20 +1,11 @@
 export const education = [
   {
-    degree: `Ph.D. in [Field]`,
-    school: `[University Name]`,
-    years: `20XX - Present`,
-    logo: `https://upload.wikimedia.org/wikipedia/en/a/a1/Arizona_State_University_seal.svg`
-  },
-  {
-    degree: `M.S. in Computer Science`,
-    school: `National Taiwan University`,
-    years: `2020 - 2022`,
-    logo: `/images/ntu_logo.svg`
-  },
-  {
-    degree: `B.S. in Computer Science`,
-    school: `National Chengchi University`,
-    years: `2018 - 2020`,
-    logo: `/images/nccu_logo.svg`
+    school: `XX 大学`,
+    degree: `数据科学与大数据技术 · 本科`,
+    years: `2017.09 – 2021.06`,
+    points: [
+      `大一就读微电子专业，后通过转专业进入数据科学与大数据技术`,
+      `大四在导师实验室参与私有链平台开发，开始接触 Golang 与区块链`
+    ]
   }
 ];
