@@ -3,24 +3,50 @@ export const skills = {
     {
       name: `Go`,
       logo: `https://cdn.simpleicons.org/go`,
-      proficiency: null,
+      proficiency: `熟悉`,
       description: null
     },
     {
       name: `Python`,
       logo: `https://cdn.simpleicons.org/python`,
-      proficiency: null,
+      proficiency: `一般`,
       description: null
     },
     {
       name: `Java`,
       logo: `https://cdn.simpleicons.org/openjdk`,
-      proficiency: null,
+      proficiency: `写过`,
       description: null
     },
     {
       name: `TypeScript`,
       logo: `https://cdn.simpleicons.org/typescript`,
+      proficiency: `写过`,
+      description: null
+    }
+  ],
+  "区块链": [
+    {
+      name: `以太坊`,
+      logo: `https://cdn.simpleicons.org/ethereum`,
+      proficiency: null,
+      description: null
+    },
+    {
+      name: `智能合约`,
+      logo: `https://cdn.simpleicons.org/solidity`,
+      proficiency: null,
+      description: null
+    },
+    {
+      name: `Merkle Tree`,
+      logo: null,
+      proficiency: null,
+      description: null
+    },
+    {
+      name: `SHA256 / RSA / ECC`,
+      logo: null,
       proficiency: null,
       description: null
     }
@@ -83,27 +109,27 @@ export const skills = {
       description: null
     },
     {
-      name: `Kafka`,
-      logo: `https://cdn.simpleicons.org/apachekafka`,
+      name: `MongoDB`,
+      logo: `https://cdn.simpleicons.org/mongodb`,
       proficiency: null,
       description: null
     }
   ],
   "认证与安全": [
     {
-      name: `OAuth2`,
+      name: `OAuth2 / OIDC`,
       logo: null,
       proficiency: null,
       description: null
     },
     {
-      name: `OIDC`,
+      name: `RBAC / ABAC`,
       logo: null,
       proficiency: null,
       description: null
     },
     {
-      name: `RBAC`,
+      name: `JWT`,
       logo: null,
       proficiency: null,
       description: null

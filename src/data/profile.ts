@@ -18,8 +18,7 @@ export const profile = {
       icon: FaRegEnvelope
     }
   ],
-  biography: `5 年后端与 DevOps 经验，做过统一身份认证、DevOps 告警平台、AIGC 图像生成和工业瑕疵检测，也做过 Kubernetes 分布式训练平台与具身机器人复现。
-目前在做企业 RAG 问答平台，负责后端架构、微服务、GitOps / CI/CD、MCP 工具集成与自动化交付；日常用 Go 和 Python，熟悉 Kubernetes、可观测性与云原生这套技术栈。
-<div class="my-2"></div>
-我相信工程师的价值在于把一件事从头到尾跑通：设计、开发、部署、观测。`
+  biography: `<p>我是 sanguinedab，一名后端工程师，也在做 DevOps。五年工作经验，起点是区块链：大学时搭过私有链、读过以太坊源码、写过智能合约，Go 也是那时候开始用的。</p>
+<p>毕业后从统一身份认证做到 DevOps 告警平台、AIGC、工业质检和 Kubernetes 训练平台，现在主要在做企业 RAG 问答平台——从校园知识问答、开放平台一路迭代到企业多租户，架构、功能、开发、部署都在这条线上。</p>
+<p>我喜欢把一件事从头到尾跑通：设计、开发、部署、观测，缺一不可。日常关心系统稳定性、可观测性和交付效率；空下来会写点自己的工具，比如把数学问题变成 Manim 讲解视频的 Reason to Manim。</p>`
 };

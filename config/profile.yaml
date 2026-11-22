@@ -33,10 +33,9 @@ profile:
 
   # 这里可以用 HTML 标签（如 <br/>、<a>、<strong> 等）
   biography: |
-    5 年后端与 DevOps 经验，做过统一身份认证、DevOps 告警平台、AIGC 图像生成和工业瑕疵检测，也做过 Kubernetes 分布式训练平台与具身机器人复现。
-    目前在做企业 RAG 问答平台，负责后端架构、微服务、GitOps / CI/CD、MCP 工具集成与自动化交付；日常用 Go 和 Python，熟悉 Kubernetes、可观测性与云原生这套技术栈。
-    <div class="my-2"></div>
-    我相信工程师的价值在于把一件事从头到尾跑通：设计、开发、部署、观测。
+    <p>我是 sanguinedab，一名后端工程师，也在做 DevOps。五年工作经验，起点是区块链：大学时搭过私有链、读过以太坊源码、写过智能合约，Go 也是那时候开始用的。</p>
+    <p>毕业后从统一身份认证做到 DevOps 告警平台、AIGC、工业质检和 Kubernetes 训练平台，现在主要在做企业 RAG 问答平台——从校园知识问答、开放平台一路迭代到企业多租户，架构、功能、开发、部署都在这条线上。</p>
+    <p>我喜欢把一件事从头到尾跑通：设计、开发、部署、观测，缺一不可。日常关心系统稳定性、可观测性和交付效率；空下来会写点自己的工具，比如把数学问题变成 Manim 讲解视频的 Reason to Manim。</p>
 
 # # =====================================================
 # # 🎓 Education Section
@@ -145,21 +144,42 @@ skills:
   语言:
     - name: "Go"
       logo: "https://cdn.simpleicons.org/go"
-      proficiency: null
+      proficiency: "熟悉"
       description: null
 
     - name: "Python"
       logo: "https://cdn.simpleicons.org/python"
-      proficiency: null
+      proficiency: "一般"
       description: null
 
     - name: "Java"
       logo: "https://cdn.simpleicons.org/openjdk"
-      proficiency: null
+      proficiency: "写过"
       description: null
 
     - name: "TypeScript"
       logo: "https://cdn.simpleicons.org/typescript"
+      proficiency: "写过"
+      description: null
+
+  区块链:
+    - name: "以太坊"
+      logo: "https://cdn.simpleicons.org/ethereum"
+      proficiency: null
+      description: null
+
+    - name: "智能合约"
+      logo: "https://cdn.simpleicons.org/solidity"
+      proficiency: null
+      description: null
+
+    - name: "Merkle Tree"
+      logo: null
+      proficiency: null
+      description: null
+
+    - name: "SHA256 / RSA / ECC"
+      logo: null
       proficiency: null
       description: null
 
@@ -210,23 +230,23 @@ skills:
       proficiency: null
       description: null
 
-    - name: "Kafka"
-      logo: "https://cdn.simpleicons.org/apachekafka"
+    - name: "MongoDB"
+      logo: "https://cdn.simpleicons.org/mongodb"
       proficiency: null
       description: null
 
   认证与安全:
-    - name: "OAuth2"
+    - name: "OAuth2 / OIDC"
       logo: null
       proficiency: null
       description: null
 
-    - name: "OIDC"
+    - name: "RBAC / ABAC"
       logo: null
       proficiency: null
       description: null
 
-    - name: "RBAC"
+    - name: "JWT"
       logo: null
       proficiency: null
       description: null
