@@ -112,13 +112,6 @@ export default function ProjectDetailPage() {
         </ol>
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">我负责什么</h2>
-        <p className="max-w-3xl text-sm leading-relaxed text-foreground/90">
-          {detail.ownership}
-        </p>
-      </section>
-
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">架构与交付</h2>
         <div className="grid gap-4 md:grid-cols-2">
