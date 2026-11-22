@@ -1,3 +1,4 @@
+import { f2lCases } from "./f2l";
 import { ollCases } from "./oll";
 import { pllCases } from "./pll";
 
@@ -44,35 +45,10 @@ export const cubeStages: CubeStage[] = [
     name: "前两层",
     en: "F2L",
     summary: "把角块和棱块配对后一起入槽，同时完成前两层。",
-    meta: "41 个标准情况",
+    meta: "41 个公式",
     poster: "/images/cube/f2l.svg",
-    note: "先放 4 条基础入槽与配对，完整的 41 条后续补齐。",
-    cases: [
-      {
-        id: "F2L 01",
-        name: "右槽入槽",
-        alg: "R U R'",
-        note: "配对好的角棱在右前方，角块白色朝右。",
-      },
-      {
-        id: "F2L 02",
-        name: "左槽入槽",
-        alg: "L' U' L",
-        note: "左手的镜像情况。",
-      },
-      {
-        id: "F2L 03",
-        name: "顶层配对 · 右",
-        alg: "U R U' R'",
-        note: "角块与棱块分开时，先把它们拼到一起。",
-      },
-      {
-        id: "F2L 04",
-        name: "顶层配对 · 左",
-        alg: "U' F' U F",
-        note: "换一个方向完成配对。",
-      },
-    ],
+    note: "完整 41 条。灰色表示与本组角棱无关的块，只保留当前要拼的这一对。",
+    cases: f2lCases,
   },
   {
     slug: "oll",

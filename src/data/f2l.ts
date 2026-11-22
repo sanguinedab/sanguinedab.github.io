@@ -1,0 +1,50 @@
+export type F2lCase = {
+  id: string;
+  alg: string;
+  image: string;
+};
+
+// 41 条 F2L，公式来自 briefcubing（MIT），图示由公式反推生成
+export const f2lCases: F2lCase[] = [
+  { id: "F2L 01", alg: "U (R U' R')", image: "/images/cube/f2l/1.svg" },
+  { id: "F2L 02", alg: "y' U' (R' U R)", image: "/images/cube/f2l/2.svg" },
+  { id: "F2L 03", alg: "y' (R' U' R)", image: "/images/cube/f2l/3.svg" },
+  { id: "F2L 04", alg: "(R U R')", image: "/images/cube/f2l/4.svg" },
+  { id: "F2L 05", alg: "U' (R U' R' U) y' (R' U' R)", image: "/images/cube/f2l/5.svg" },
+  { id: "F2L 06", alg: "U' (R U R' U) (R U R')", image: "/images/cube/f2l/6.svg" },
+  { id: "F2L 07", alg: "U' (R U2' R' U) y' (R' U' R)", image: "/images/cube/f2l/7.svg" },
+  { id: "F2L 08", alg: "R' U2' R2 U R2' U R", image: "/images/cube/f2l/8.svg" },
+  { id: "F2L 09", alg: "y' U (R' U R U') (R' U' R)", image: "/images/cube/f2l/9.svg" },
+  { id: "F2L 10", alg: "U' (R U' R' U) (R U R')", image: "/images/cube/f2l/10.svg" },
+  { id: "F2L 11", alg: "(U' R U R') U2 (R U' R')", image: "/images/cube/f2l/11.svg" },
+  { id: "F2L 12", alg: "y' (U R' U' R) U2' (R' U R)", image: "/images/cube/f2l/12.svg" },
+  { id: "F2L 13", alg: "U' (R U2' R') U2 (R U' R')", image: "/images/cube/f2l/13.svg" },
+  { id: "F2L 14", alg: "y' U (R' U2 R) U2' (R' U R)", image: "/images/cube/f2l/14.svg" },
+  { id: "F2L 15", alg: "U (R U2 R') U (R U' R')", image: "/images/cube/f2l/15.svg" },
+  { id: "F2L 16", alg: "y' U' (R' U2 R) U' (R' U R)", image: "/images/cube/f2l/16.svg" },
+  { id: "F2L 17", alg: "U2 (R U R' U) (R U' R')", image: "/images/cube/f2l/17.svg" },
+  { id: "F2L 18", alg: "y' U2 (R' U' R) U' (R' U R)", image: "/images/cube/f2l/18.svg" },
+  { id: "F2L 19", alg: "y' (R' U R) U2' y (R U R')", image: "/images/cube/f2l/19.svg" },
+  { id: "F2L 20", alg: "(R U' R' U2) y' (R' U' R)", image: "/images/cube/f2l/20.svg" },
+  { id: "F2L 21", alg: "(R U2 R') U' (R U R')", image: "/images/cube/f2l/21.svg" },
+  { id: "F2L 22", alg: "y' (R' U2 R) U (R' U' R)", image: "/images/cube/f2l/22.svg" },
+  { id: "F2L 23", alg: "U (R U' R' U') (R U' R' U) (R U' R')", image: "/images/cube/f2l/23.svg" },
+  { id: "F2L 24", alg: "y' U' (R' U R U) (R' U R U') (R' U R)", image: "/images/cube/f2l/24.svg" },
+  { id: "F2L 25", alg: "U' F' (R U R' U') R' F R", image: "/images/cube/f2l/25.svg" },
+  { id: "F2L 26", alg: "U (R U' R') U' (F' U F)", image: "/images/cube/f2l/26.svg" },
+  { id: "F2L 27", alg: "(R U' R' U) (R U' R')", image: "/images/cube/f2l/27.svg" },
+  { id: "F2L 28", alg: "y' (R' U R U') (R' U R)", image: "/images/cube/f2l/28.svg" },
+  { id: "F2L 29", alg: "y' (R' U' R U) (R' U' R)", image: "/images/cube/f2l/29.svg" },
+  { id: "F2L 30", alg: "(R U R' U') (R U R')", image: "/images/cube/f2l/30.svg" },
+  { id: "F2L 31", alg: "(R U' R' U) y' (R' U R)", image: "/images/cube/f2l/31.svg" },
+  { id: "F2L 32", alg: "(U R U' R') (U R U' R') (U R U' R')", image: "/images/cube/f2l/32.svg" },
+  { id: "F2L 33", alg: "(U' R U' R') U2 (R U' R')", image: "/images/cube/f2l/33.svg" },
+  { id: "F2L 34", alg: "U (R U R') U2 (R U R')", image: "/images/cube/f2l/34.svg" },
+  { id: "F2L 35", alg: "(U' R U R') U y' (R' U' R)", image: "/images/cube/f2l/35.svg" },
+  { id: "F2L 36", alg: "U (F' U' F) U' (R U R')", image: "/images/cube/f2l/36.svg" },
+  { id: "F2L 37", alg: "(R U' R') y' U (R' U2 R) U2' (R' U R)", image: "/images/cube/f2l/37.svg" },
+  { id: "F2L 38", alg: "(R U' R' U') R U R' U2 (R U' R')", image: "/images/cube/f2l/38.svg" },
+  { id: "F2L 39", alg: "(R U' R' U) (R U2' R') U (R U' R')", image: "/images/cube/f2l/39.svg" },
+  { id: "F2L 40", alg: "(F' U F) U2 (R U R' U) (R U' R')", image: "/images/cube/f2l/40.svg" },
+  { id: "F2L 41", alg: "(R U R' U') (R U' R') U2 y' (R' U' R)", image: "/images/cube/f2l/41.svg" },
+];

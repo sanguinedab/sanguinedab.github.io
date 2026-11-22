@@ -159,8 +159,17 @@ export default function CubeStagePage() {
           className="underline underline-offset-4 hover:text-foreground"
         >
           speedcube.de
+        </a>{" "}
+        与{" "}
+        <a
+          href="https://github.com/AshleyF/briefcubing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4 hover:text-foreground"
+        >
+          briefcubing
         </a>
-        ，图示来自{" "}
+        ；OLL / PLL 图示来自{" "}
         <a
           href="https://github.com/cfgerr/20"
           target="_blank"
@@ -169,7 +178,7 @@ export default function CubeStagePage() {
         >
           cfgerr/20
         </a>
-        （MIT）。
+        （MIT），F2L 图示由公式生成。
       </p>
     </div>
   );
