@@ -48,7 +48,7 @@ export default function ResumePage() {
   const [editing, setEditing] = useState(true);
   const [avatar, setAvatar] = useState(profile.profileImage);
 
-  const handlePrint = () => {
+  const printSheet = () => {
     const previousTitle = document.title;
     document.title = `${profile.name}-简历`;
     const restore = () => {
@@ -58,6 +58,16 @@ export default function ResumePage() {
     window.addEventListener("afterprint", restore);
     window.print();
     window.setTimeout(restore, 1500);
+  };
+
+  const handlePrint = () => {
+    // 先退出编辑态再打印，避免个别浏览器在 contentEditable 状态下漏渲染内容
+    if (editing) {
+      setEditing(false);
+      window.setTimeout(printSheet, 120);
+    } else {
+      printSheet();
+    }
   };
 
   const handleAvatar = (event: ChangeEvent<HTMLInputElement>) => {
