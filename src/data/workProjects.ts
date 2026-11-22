@@ -12,7 +12,7 @@ export const workProjects: ShowcaseProject[] = [
     summary:
       "从校园知识问答做到企业级多租户知识平台，经历三个阶段的架构演进。",
     points: [
-      "2024.08 – 2025.02 校园百事通：基于 FastGPT 搭建面向高校的知识问答系统",
+      "2024.08 – 2025.02 校园知识问答：基于 FastGPT 搭建面向高校的知识问答系统",
       "2025.03 – 2025.12 开放平台：支持自由搭建工作流与 Agent 的开发者平台",
       "2026.01 – 至今 企业问答：底层换成 qwenpaw agent，K8s Operator 支撑多租户隔离",
     ],

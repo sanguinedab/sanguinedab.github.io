@@ -20,11 +20,11 @@ export const projectDetails: Record<string, ProjectDetail> = {
   "enterprise-rag": {
     slug: "enterprise-rag",
     intro:
-      "从校园知识问答做到企业级多租户知识平台，先后经历校园百事通、开放平台、企业知识问答三个阶段。",
+      "从校园知识问答做到企业级多租户知识平台，先后经历校园知识问答、开放平台、企业知识问答三个阶段。",
     phases: [
       {
         period: "2024.08 – 2025.02",
-        title: "校园百事通",
+        title: "校园知识问答",
         summary:
           "面向高校的知识问答系统，底层基于 FastGPT 搭建问答工作流，把知识库问答先跑起来。",
       },
