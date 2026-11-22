@@ -129,7 +129,7 @@
 @media print {
   @page {
     size: A4;
-    margin: 14mm;
+    margin: 12mm;
   }
 
   html,
@@ -150,6 +150,13 @@
     box-shadow: none !important;
     padding: 0 !important;
     max-width: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-sheet * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .resume-sheet a {
