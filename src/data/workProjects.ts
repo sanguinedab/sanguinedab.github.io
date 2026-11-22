@@ -97,5 +97,30 @@ export const workProjects: ShowcaseProject[] = [
   },
 ];
 
-// 个人项目：后续补充（开源项目、side project 等）
-export const personalProjects: ShowcaseProject[] = [];
+// 个人项目
+export const personalProjects: ShowcaseProject[] = [
+  {
+    title: "Reason to Manim",
+    period: "2026.09 – 至今",
+    role: "全栈 / 独立开发",
+    summary:
+      "把一句「讲讲这个数学知识点 / 这道题」变成可播放的 Manim 讲解视频的 AI 应用。",
+    points: [
+      "Pi Agent 在后台自主完成解题 / 知识梳理、分镜、生成 Manim 代码并调用渲染工具，渲染失败时读报错自修重试。",
+      "全托管在 Cloudflare Workers + Durable Objects：生成任务在 DO 内异步执行、前端轮询进度，零 VPS、零常驻服务器。",
+      "渲染交给独立的 Rust 服务 manimgx-api，视频落 R2、任务与匿名指标落 D1；Manim 知识库按需读取，不塞进 system prompt。",
+      "入口处有意图与合规闸门、按 IP 限流，挡掉跑题请求和刷接口带来的账单风险。",
+      "接入 Clerk 登录与历史记录，支持下载、删除和注销清理，并补齐隐私政策、服务条款、Cookie 政策等上线合规层。",
+    ],
+    tags: [
+      "Cloudflare Workers",
+      "Durable Objects",
+      "Manim",
+      "AI Agent",
+      "Rust",
+      "TypeScript",
+    ],
+    href: "https://reason2m.com",
+    cover: "/images/projects/reason2m.svg",
+  },
+];
