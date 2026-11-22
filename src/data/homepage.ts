@@ -8,7 +8,7 @@ export const homepage = {
     {
       name: `Experience`,
       variant: `default`,
-      enabled: true
+      enabled: false
     },
     {
       name: `Publications`,
