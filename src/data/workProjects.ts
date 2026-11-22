@@ -7,6 +7,7 @@ export const workProjects: ShowcaseProject[] = [
     period: "2024.08 – 至今",
     role: "平台架构 / DevOps",
     tags: ["RAG", "多租户", "Kubernetes"],
+    featured: true,
     slug: "enterprise-rag",
     summary:
       "从校园知识问答做到企业级多租户知识平台，经历三个阶段的架构演进。",

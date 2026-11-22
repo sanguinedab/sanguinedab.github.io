@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from "react-router";
 import {
   FaWrench,
   FaCode,
+  FaStar,
   FaArrowRight,
   FaArrowUpRightFromSquare,
 } from "react-icons/fa6";
@@ -85,6 +86,7 @@ export default function ProjectsPage() {
       (project) => activeTag === "all" || project.tags?.includes(activeTag),
     )
     .sort((a, b) => {
+      if (a.featured !== b.featured) return a.featured ? -1 : 1;
       const diff = startOf(b.period).localeCompare(startOf(a.period));
       return activeSort === "recent" ? diff : -diff;
     });
@@ -237,14 +239,26 @@ function ProjectCard({
 }) {
   const { title, period, role, summary, points, tags, cover, href, slug } =
     project;
+  const featured = project.featured === true;
   const number = workProjects.findIndex((item) => item.title === title) + 1;
   const coverStyle =
     COVER_STYLES[(number > 0 ? number - 1 : 0) % COVER_STYLES.length];
 
   return (
-    <Card className="rounded-md overflow-hidden gap-0 py-0 w-full">
+    <Card
+      className={cn(
+        "rounded-md overflow-hidden gap-0 py-0 w-full",
+        featured &&
+          "border-emerald-500/40 bg-gradient-to-br from-emerald-500/10 via-card to-card ring-1 ring-emerald-500/20 shadow-[0_0_45px_-20px_rgba(16,185,129,0.7)]",
+      )}
+    >
       <div className="flex flex-col lg:flex-row">
         <div className="relative aspect-3/2 w-full overflow-hidden lg:aspect-auto lg:w-72 lg:self-stretch">
+          {featured ? (
+            <span className="absolute left-3 top-3 z-10 rounded-sm bg-emerald-500 px-2 py-0.5 text-[10px] font-semibold tracking-[0.2em] text-emerald-950">
+              精选
+            </span>
+          ) : null}
           {cover ? (
             <img
               src={cover}
@@ -281,10 +295,23 @@ function ProjectCard({
           <div className="flex flex-wrap items-start justify-between gap-2">
             <div className="min-w-0">
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="text-base font-semibold">{title}</h3>
+                <h3
+                  className={cn(
+                    "font-semibold",
+                    featured ? "text-lg" : "text-base",
+                  )}
+                >
+                  {title}
+                </h3>
                 <span className="font-mono text-sm text-muted-foreground">
                   {period}
                 </span>
+                {featured ? (
+                  <Badge className="gap-1 rounded-sm border-transparent bg-emerald-500/15 text-emerald-400">
+                    <FaStar className="h-3 w-3" />
+                    重点项目
+                  </Badge>
+                ) : null}
               </div>
               {summary && (
                 <p className="mt-1 text-sm text-muted-foreground">{summary}</p>
@@ -332,7 +359,16 @@ function ProjectCard({
 
           {slug ? (
             <div className="pt-1">
-              <Button asChild variant="outline" size="sm" className="gap-1.5">
+              <Button
+                asChild
+                variant={featured ? "default" : "outline"}
+                size="sm"
+                className={cn(
+                  "gap-1.5",
+                  featured &&
+                    "bg-emerald-500 text-emerald-950 hover:bg-emerald-400",
+                )}
+              >
                 <Link to={`/projects/${slug}`}>
                   查看详情
                   <FaArrowRight className="h-3 w-3" />

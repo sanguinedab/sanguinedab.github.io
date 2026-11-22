@@ -6,6 +6,7 @@ import {
   FaLayerGroup,
   FaServer,
   FaSitemap,
+  FaStar,
 } from "react-icons/fa6";
 
 import { Badge } from "@/components/ui/badge";
@@ -62,6 +63,12 @@ export default function ProjectDetailPage() {
           <Badge variant="secondary" className="rounded-sm font-normal">
             {project.role}
           </Badge>
+          {project.featured ? (
+            <Badge className="gap-1 rounded-sm border-transparent bg-emerald-500/15 text-emerald-400">
+              <FaStar className="h-3 w-3" />
+              重点项目
+            </Badge>
+          ) : null}
         </div>
         <p className="font-mono text-sm text-muted-foreground">
           {project.period}
