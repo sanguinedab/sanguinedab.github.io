@@ -1,312 +1,176 @@
-import { useSearchParams, useNavigate } from "react-router";
-import { FaWrench, FaGithub, FaGlobe, FaRegStar } from "react-icons/fa6";
+import type { ReactNode } from "react";
+import { useSearchParams } from "react-router";
+import { FaWrench, FaCode, FaLink } from "react-icons/fa6";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { usePageTitle } from "@/hooks/use-pagetitle";
-import { repos } from "@/data/repos";
+import { personalProjects, workProjects } from "@/data/workProjects";
+import type { ShowcaseProject } from "@/types/showcaseProject";
+import { cn } from "@/lib/utils";
 
-const validSorts = ["stars", "updated", "created"] as const;
-type SortByType = (typeof validSorts)[number];
-
-const allTopics = Array.from(
-  new Set(Object.values(repos).flatMap((repo) => repo.topics ?? [])),
-).sort();
+type TabKey = "work" | "personal";
 
 export default function ProjectsPage() {
   usePageTitle("Projects");
 
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tab: TabKey =
+    searchParams.get("tab") === "personal" ? "personal" : "work";
 
-  const topic = searchParams.get("topic");
-  const sort = searchParams.get("sort");
-
-  const topicFilter: string =
-    topic && allTopics.includes(topic) ? topic : "all";
-  const sortBy: SortByType = validSorts.find((s) => s === sort) ?? "updated";
-
-  const updateTopicFilter = (newTopic: string) => {
+  const setTab = (next: TabKey) => {
     const params = new URLSearchParams(searchParams);
-    if (newTopic === "all") params.delete("topic");
-    else params.set("topic", newTopic);
-    navigate({ search: params.toString() }, { replace: true });
+    if (next === "work") params.delete("tab");
+    else params.set("tab", next);
+    setSearchParams(params, { replace: true });
   };
 
-  const updateSortBy = (newSortBy: SortByType) => {
-    const params = new URLSearchParams(searchParams);
-    params.set("sort", newSortBy);
-    navigate({ search: params.toString() }, { replace: true });
-  };
-
-  const filteredProjects = (Object.keys(repos) as (keyof typeof repos)[])
-    .filter((project_name) => {
-      const project = repos[project_name];
-      const topics = (project.topics ?? []) as string[];
-      const matchesTopic =
-        topicFilter === "all" || topics.includes(topicFilter);
-      return matchesTopic;
-    })
-    .sort((a, b) => {
-      const aData = repos[a];
-      const bData = repos[b];
-
-      if (sortBy === "stars") {
-        return (bData.stargazers_count ?? 0) - (aData.stargazers_count ?? 0);
-      } else if (sortBy === "created") {
-        return (
-          new Date(bData.created_at).getTime() -
-          new Date(aData.created_at).getTime()
-        );
-      } else {
-        return (
-          new Date(bData.pushed_at).getTime() -
-          new Date(aData.pushed_at).getTime()
-        );
-      }
-    });
+  const projects = tab === "work" ? workProjects : personalProjects;
 
   return (
     <div className="flex flex-1 flex-col items-center gap-10">
-      <div className="w-full max-w-6xl space-y-10">
+      <div className="w-full max-w-4xl space-y-8">
         <div className="flex flex-row justify-center items-center gap-4 text-4xl font-semibold">
           <FaWrench />
           Projects
         </div>
 
-        <div className="flex justify-between flex-wrap gap-2 items-center mx-2 sm:mx-6 my-1 relative -top-2">
-          <TopicFilter
-            topicFilter={topicFilter}
-            setTopicFilter={updateTopicFilter}
-          />
-          <SortSelector sortBy={sortBy} setSortBy={updateSortBy} />
+        <div
+          role="tablist"
+          aria-label="项目类型"
+          className="mx-auto flex w-fit items-center gap-1 rounded-lg border bg-muted/40 p-1"
+        >
+          <TabButton
+            active={tab === "work"}
+            count={workProjects.length}
+            onClick={() => setTab("work")}
+          >
+            工作项目
+          </TabButton>
+          <TabButton
+            active={tab === "personal"}
+            count={personalProjects.length}
+            onClick={() => setTab("personal")}
+          >
+            个人项目
+          </TabButton>
         </div>
 
-        <Separator />
-
-        <div className="grid grid-cols-1 w-full gap-4 px-2 sm:px-6">
-          {filteredProjects.map((projectName) => (
-            <ProjectCard
-              key={projectName}
-              project_name={projectName}
-              setTopicFilter={updateTopicFilter}
-            />
-          ))}
-        </div>
+        {projects.length === 0 ? (
+          <EmptyState />
+        ) : (
+          <div className="space-y-4">
+            {projects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-function TopicFilter({
-  topicFilter,
-  setTopicFilter,
+function TabButton({
+  active,
+  count,
+  onClick,
+  children,
 }: {
-  topicFilter: string;
-  setTopicFilter: (val: string) => void;
+  active: boolean;
+  count: number;
+  onClick: () => void;
+  children: ReactNode;
 }) {
   return (
-    <div className="flex items-center gap-2">
-      <label>Filter by topic:</label>
-      <Select value={topicFilter} onValueChange={setTopicFilter}>
-        <SelectTrigger className="w-[180px] cursor-pointer">
-          <SelectValue placeholder="Topic" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">📂 All Topics</SelectItem>
-          {allTopics.map((topic) => (
-            <SelectItem key={topic} value={topic}>
-              {topic}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-
-      {topicFilter !== "all" && (
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setTopicFilter("all")}
-          className="px-2 text-sm cursor-pointer text-muted-foreground"
-        >
-          Clear filter ✕
-        </Button>
+    <button
+      type="button"
+      role="tab"
+      aria-selected={active}
+      onClick={onClick}
+      className={cn(
+        "flex cursor-pointer items-center gap-2 rounded-md px-4 py-1.5 text-sm transition-colors",
+        active
+          ? "bg-background font-medium text-foreground shadow-sm"
+          : "text-muted-foreground hover:text-foreground",
       )}
-    </div>
+    >
+      {children}
+      <span className="text-xs text-muted-foreground">{count}</span>
+    </button>
   );
 }
 
-function SortSelector({
-  sortBy,
-  setSortBy,
-}: {
-  sortBy: SortByType;
-  setSortBy: (val: SortByType) => void;
-}) {
-  return (
-    <div className="flex items-center gap-2">
-      <label>Sort by:</label>
-      <Select value={sortBy} onValueChange={setSortBy}>
-        <SelectTrigger className="w-[160px] cursor-pointer">
-          <SelectValue placeholder="Sort by" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="updated">🕒 Last Updated</SelectItem>
-          <SelectItem value="created">📅 Created Time</SelectItem>
-          <SelectItem value="stars">⭐ Star Count</SelectItem>
-        </SelectContent>
-      </Select>
-    </div>
-  );
-}
-
-function ProjectCard({
-  project_name,
-  setTopicFilter,
-}: {
-  project_name: keyof typeof repos;
-  setTopicFilter: (val: string) => void;
-}) {
-  const repo = repos[project_name];
-  const {
-    html_url,
-    previewImage,
-    displayName,
-    name,
-    description,
-    topics = [],
-    language,
-    stargazers_count,
-    homepage,
-  } = repo;
+function ProjectCard({ project }: { project: ShowcaseProject }) {
+  const { title, period, role, summary, points, tags, href } = project;
 
   return (
-    <Card className="rounded-md overflow-hidden gap-0 py-0 w-full">
-      <div className="flex flex-col lg:flex-row">
-        <a
-          href={html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-        >
-          <div className="aspect-3/2 w-full max-h-72 lg:max-w-75 lg:h-50 overflow-hidden">
-            {previewImage ? (
-              <img
-                src={previewImage}
-                alt={name || "Project image"}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            ) : (
-              <div className="flex flex-col items-center justify-center p-4 w-full h-full bg-muted">
-                <span className="text-lg font-semibold opacity-80 text-center">
-                  {name || "Unnamed Project"}
-                </span>
-                <span className="text-sm text-muted-foreground text-center">
-                  Image not available
-                </span>
-              </div>
-            )}
-          </div>
-        </a>
-
-        <div className="w-full border-t block lg:hidden" />
-        <div className="h-full border-l hidden lg:block" />
-
-        <div className="flex flex-col p-4 lg:py-2.5 lg:px-5 flex-1 lg:h-50">
-          <ScrollArea className="flex-1 min-h-0">
-            <div className="flex flex-col gap-y-2">
-              <div className="text-base font-semibold">
-                {html_url ? (
-                  <a
-                    href={html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub repository"
-                    className="hover:underline underline-offset-4"
-                  >
-                    {displayName || name}
-                  </a>
-                ) : (
-                  displayName || name
-                )}
-              </div>
-
-              <p className="text-sm text-muted-foreground">
-                {description || "Details unavailable"}
-              </p>
-
-              {topics?.length ? (
-                <div className="flex flex-wrap gap-1.5">
-                  {topics.map((topic: string) => (
-                    <Button
-                      key={topic}
-                      variant="secondary"
-                      size="sm"
-                      onClick={() => setTopicFilter(topic)}
-                      className="rounded-sm cursor-pointer font-normal px-2 h-7.5 text-sm"
-                    >
-                      {topic}
-                    </Button>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </ScrollArea>
-
-          <div className="flex flex-row items-center justify-between text-muted-foreground pt-2">
-            <div className="flex items-center gap-2 text-sm">
-              <p>Language: {language || "Unknown"}</p>
-              {stargazers_count !== null && (
-                <a
-                  href={`${html_url}/stargazers`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Stargazers"
-                  className="flex items-center gap-1 text-yellow-600 hover:text-yellow-500"
-                >
-                  <FaRegStar className="w-4 h-4" />
-                  <span>{stargazers_count}</span>
-                </a>
-              )}
-            </div>
-
-            <div className="flex items-center gap-2">
-              {homepage && (
-                <a
-                  href={homepage}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Project homepage"
-                  className="hover:text-foreground"
-                >
-                  <FaGlobe className="w-6 h-6" />
-                </a>
-              )}
-              {html_url && (
-                <a
-                  href={html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub repository"
-                  className="hover:text-foreground"
-                >
-                  <FaGithub className="w-6 h-6" />
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
+    <Card className="gap-0 p-5 sm:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <span className="font-mono text-sm text-muted-foreground">
+          {period}
+        </span>
+        <Badge variant="secondary" className="rounded-sm font-normal">
+          {role}
+        </Badge>
       </div>
+
+      <h3 className="mt-2 text-lg font-semibold tracking-tight">
+        {href ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 hover:underline underline-offset-4"
+          >
+            {title}
+            <FaLink className="h-3.5 w-3.5 text-muted-foreground" />
+          </a>
+        ) : (
+          title
+        )}
+      </h3>
+
+      {summary && (
+        <p className="mt-1 text-sm text-muted-foreground">{summary}</p>
+      )}
+
+      {points?.length ? (
+        <ul className="mt-3 space-y-1.5">
+          {points.map((point) => (
+            <li
+              key={point}
+              className="flex gap-2 text-sm leading-relaxed text-foreground/90"
+            >
+              <span aria-hidden className="select-none text-muted-foreground">
+                ▸
+              </span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
+      {tags?.length ? (
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {tags.map((tag) => (
+            <Badge key={tag} variant="outline" className="font-normal">
+              {tag}
+            </Badge>
+          ))}
+        </div>
+      ) : null}
+    </Card>
+  );
+}
+
+function EmptyState() {
+  return (
+    <Card className="items-center justify-center gap-3 py-16 text-center">
+      <FaCode className="h-8 w-8 text-muted-foreground" aria-hidden />
+      <p className="font-medium">个人项目整理中</p>
+      <p className="max-w-sm text-sm text-muted-foreground">
+        开源项目和 side project 稍后补充，先看看工作项目吧。
+      </p>
     </Card>
   );
 }

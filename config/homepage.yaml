@@ -22,7 +22,7 @@ homepage:
 
     - name: Projects
       variant: default
-      enabled: true
+      enabled: false # 首页暂不展示（原为 GitHub 仓库自动同步），改用 /projects 页
 
     - name: Skills
       variant: default

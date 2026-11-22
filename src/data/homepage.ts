@@ -18,7 +18,7 @@ export const homepage = {
     {
       name: `Projects`,
       variant: `default`,
-      enabled: true
+      enabled: false
     },
     {
       name: `Skills`,
