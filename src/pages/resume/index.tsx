@@ -13,6 +13,7 @@ import {
   FaLaptopCode,
   FaLocationDot,
   FaPen,
+  FaPhone,
   FaPrint,
   FaRegEnvelope,
   FaRotateLeft,
@@ -23,14 +24,13 @@ import { Button } from "@/components/ui/button";
 import { usePageTitle } from "@/hooks/use-pagetitle";
 import { education } from "@/data/education";
 import { profile } from "@/data/profile";
+import { projectDetails } from "@/data/projectDetails";
 import { skills } from "@/data/skills";
 import { workExperience } from "@/data/workExperience";
 import { personalProjects, workProjects } from "@/data/workProjects";
 
-const SUMMARY =
-  "5 年服务端与 DevOps 经验：从统一身份认证、DevOps 告警、AIGC、工业质检一路做到 Kubernetes 训练平台；目前负责企业 RAG 问答平台的架构、开发与交付。熟悉 Go / Python、Kubernetes、可观测性与 CI/CD，近期专注 AI Agent 与 MCP 落地。";
-
 const CONTACTS = [
+  { icon: FaPhone, text: "138 0000 0000" },
   { icon: FaLocationDot, text: profile.location },
   { icon: FaRegEnvelope, text: profile.email, href: `mailto:${profile.email}` },
   {
@@ -181,9 +181,6 @@ export default function ResumePage() {
               <p className="mt-1 text-sm font-medium text-slate-600">
                 {profile.headline}
               </p>
-              <p className="mt-2 text-[13px] leading-relaxed text-zinc-600">
-                {SUMMARY}
-              </p>
               <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-zinc-600">
                 {CONTACTS.map((item) => (
                   <span key={item.text} className="inline-flex items-center gap-1.5">
@@ -230,7 +227,10 @@ export default function ResumePage() {
                       {item.years}
                     </span>
                   </div>
-                  <p className="text-xs text-zinc-500">{item.title}</p>
+                  <p className="text-xs text-zinc-500">
+                    {item.title}
+                    {item.department ? ` · ${item.department}` : ""}
+                  </p>
                   {item.points?.length ? (
                     <ul className="mt-1.5 space-y-1">
                       {item.points.map((point) => (
@@ -363,6 +363,22 @@ function ProjectItem({
             </li>
           ))}
         </ul>
+      ) : null}
+
+      {project.slug ? (
+        <div className="mt-2 space-y-1">
+          {projectDetails[project.slug]?.capabilities.map((capability) => (
+            <p
+              key={capability.title}
+              className="text-[12.5px] leading-snug text-zinc-700"
+            >
+              <span className="font-semibold text-zinc-800">
+                {capability.title}
+              </span>
+              ：{capability.points.join("；")}
+            </p>
+          ))}
+        </div>
       ) : null}
     </div>
   );

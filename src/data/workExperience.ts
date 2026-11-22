@@ -2,6 +2,7 @@ export const workExperience = [
   {
     company: `XX 科技`,
     title: `服务端开发`,
+    department: `后端研发部`,
     years: `2021.06 – 2023.06`,
     points: [
       `负责认证授权、告警通知、AIGC 等业务的服务端设计与开发`,
@@ -12,6 +13,7 @@ export const workExperience = [
   {
     company: `XX 智能科技`,
     title: `服务端开发 · DevOps`,
+    department: `平台研发部`,
     years: `2023.06 – 至今`,
     points: [
       `负责工业质检、模型训练平台与企业知识问答平台的服务端开发与交付`,

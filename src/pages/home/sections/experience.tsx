@@ -30,7 +30,7 @@ export default function ExperienceSection() {
         entries={workExperience.map((item) => ({
           title: item.company,
           period: item.years,
-          subtitle: item.title,
+          subtitle: `${item.title} · ${item.department}`,
           points: item.points,
         }))}
       />
