@@ -354,7 +354,7 @@ function ProjectItem({
       ) : null}
       {project.points?.length ? (
         <ul className="mt-1.5 space-y-1">
-          {project.points.slice(0, project.title === "企业 RAG 问答平台" ? 3 : 2).map((point) => (
+          {project.points.map((point) => (
             <li
               key={point}
               className="flex gap-2 text-[13px] leading-snug text-zinc-700"
