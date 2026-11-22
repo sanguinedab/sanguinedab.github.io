@@ -1,4 +1,4 @@
-import { LuUser, LuWrench, LuNewspaper, LuClapperboard, LuMusic } from "react-icons/lu";
+import { LuUser, LuWrench, LuNewspaper, LuBox, LuMusic } from "react-icons/lu";
 
 export const sidebar = {
   userName: `sanguinedab`,
@@ -20,9 +20,9 @@ export const sidebar = {
       icon: LuNewspaper
     },
     {
-      title: `电影`,
-      url: `movies`,
-      icon: LuClapperboard
+      title: `魔方`,
+      url: `cube`,
+      icon: LuBox
     },
     {
       title: `音乐`,
