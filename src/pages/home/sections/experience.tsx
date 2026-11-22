@@ -13,7 +13,7 @@ export default function ExperienceSection() {
         <CardHeader>
           <CardTitle className="flex flex-row justify-center items-center gap-2 text-plus">
             <FaGraduationCap />
-            Education
+            教育经历
           </CardTitle>
         </CardHeader>
         <ScrollArea className="max-h-96">
@@ -43,7 +43,7 @@ export default function ExperienceSection() {
         <CardHeader>
           <CardTitle className="flex flex-row justify-center items-center gap-2 text-plus">
             <FaBriefcase />
-            Work Experiences
+            工作经历
           </CardTitle>
         </CardHeader>
         <ScrollArea className="max-h-96">

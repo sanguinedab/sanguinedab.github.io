@@ -5,7 +5,7 @@ import { usePageTitle } from "@/hooks/use-pagetitle";
 import { spotify } from "@/data/spotify";
 
 export default function MusicPage() {
-  usePageTitle("Music");
+  usePageTitle("音乐");
 
   return (
     <div className="flex flex-1 flex-col items-center gap-10">
@@ -13,11 +13,11 @@ export default function MusicPage() {
         <div className="space-y-4">
           <div className="flex flex-row justify-center items-center gap-4 text-4xl font-semibold">
             <FaMusic />
-            Music
+            音乐
           </div>
 
           <p className="text-center text-lg text-muted-foreground leading-relaxed italic opacity-80">
-            Some of my favorite songs and playlists
+            一些我喜欢的歌和歌单
           </p>
         </div>
 
@@ -46,7 +46,7 @@ const SpotifyEmbed = () => {
       allowFullScreen
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy"
-      title="Spotify Playlist"
+      title="Spotify 歌单"
       className="w-full h-[62vh]"
     ></iframe>
   );

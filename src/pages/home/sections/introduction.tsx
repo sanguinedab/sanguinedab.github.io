@@ -24,7 +24,7 @@ function ProfileCard() {
     <div className="flex flex-col items-center gap-y-4 shrink-0">
       <img
         src={profile.profileImage}
-        alt="Profile"
+        alt="头像"
         className="w-60 h-auto rounded-lg object-cover"
         loading="lazy"
       />
@@ -79,15 +79,15 @@ function ProfileCard() {
 function Biography() {
   return (
     <div className="min-w-64 max-w-prose w-full px-4 sm:px-0">
-      <div className="text-2xl font-semibold mb-2">About Me</div>
+      <div className="text-2xl font-semibold mb-2">关于我</div>
       {profile.biography ? (
         <div
           className="prose dark:prose-invert text-justify text-base/6"
           dangerouslySetInnerHTML={{ __html: profile.biography }}
-          aria-label="User biography"
+          aria-label="个人简介"
         />
       ) : (
-        <p className="text-gray-500 italic">No biography available.</p>
+        <p className="text-gray-500 italic">暂无简介。</p>
       )}
     </div>
   );
@@ -96,10 +96,10 @@ function Biography() {
 function EmailCopy({ email }: { email: string }) {
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
-    toast("📋 Email Address Copied!", {
+    toast("📋 邮箱已复制", {
       // description: `${email} has been copied to your clipboard.`,
       action: {
-        label: "📩 Send Email",
+        label: "📩 发送邮件",
         onClick: () => {
           window.location.href = `mailto:${email}`;
         },
@@ -120,7 +120,7 @@ function EmailCopy({ email }: { email: string }) {
           </button>
         </TooltipTrigger>
         <TooltipContent side="right">
-          <p>Click to copy</p>
+          <p>点击复制</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

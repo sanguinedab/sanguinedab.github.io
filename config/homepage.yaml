@@ -14,11 +14,11 @@ homepage:
 
     - name: Experience
       variant: default
-      enabled: true
+      enabled: false # 模板示例履历，等真实经历
 
     - name: Publications
       variant: default
-      enabled: true
+      enabled: false # 模板示例论文，等真实内容
 
     - name: Projects
       variant: default
@@ -30,8 +30,8 @@ homepage:
 
     - name: Talks
       variant: default # default | card
-      enabled: true
+      enabled: false # 模板示例，等真实内容
 
     - name: Services
       variant: default # default | card
-      enabled: true
+      enabled: false # 模板示例，等真实内容

@@ -1,96 +1,132 @@
 export const skills = {
-  Programming: [
+  "语言": [
     {
-      name: `[Name]`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg`,
-      proficiency: `[Proficiency]`,
-      description: `[Description]`
+      name: `Go`,
+      logo: `https://cdn.simpleicons.org/go`,
+      proficiency: null,
+      description: null
     },
     {
       name: `Python`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg`,
-      proficiency: `Experienced`,
+      logo: `https://cdn.simpleicons.org/python`,
+      proficiency: null,
       description: null
     },
     {
-      name: `JavaScript`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg`,
-      proficiency: `Fluent`,
+      name: `Java`,
+      logo: `https://cdn.simpleicons.org/openjdk`,
+      proficiency: null,
+      description: null
+    },
+    {
+      name: `TypeScript`,
+      logo: `https://cdn.simpleicons.org/typescript`,
+      proficiency: null,
       description: null
     }
   ],
-  Web: [
+  "云原生": [
     {
-      name: `React`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/3/30/React_Logo_SVG.svg`,
-      proficiency: `Advanced`,
+      name: `Kubernetes`,
+      logo: `https://cdn.simpleicons.org/kubernetes`,
+      proficiency: null,
       description: null
     },
     {
-      name: `Typescript`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/f/f5/Typescript.svg`,
-      proficiency: `Fluent`,
+      name: `Docker`,
+      logo: `https://cdn.simpleicons.org/docker`,
+      proficiency: null,
       description: null
     },
     {
-      name: `TailwindCSS`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg`,
-      proficiency: `Fluent`,
+      name: `Helm`,
+      logo: `https://cdn.simpleicons.org/helm`,
+      proficiency: null,
       description: null
     },
     {
-      name: `Next.js`,
-      logo: `https://logo.svgcdn.com/devicon/nextjs-original.png`,
-      proficiency: `Fluent`,
-      description: null
-    }
-  ],
-  "Machine Learning": [
-    {
-      name: `PyTorch`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg`,
-      proficiency: `Experienced`,
+      name: `Ansible`,
+      logo: `https://cdn.simpleicons.org/ansible`,
+      proficiency: null,
       description: null
     },
     {
-      name: `TensorFlow`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg`,
-      proficiency: `Fluent`,
+      name: `Prometheus`,
+      logo: `https://cdn.simpleicons.org/prometheus`,
+      proficiency: null,
       description: null
     },
     {
-      name: `Keras`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/a/ae/Keras_logo.svg`,
-      proficiency: `Fluent`,
+      name: `Grafana`,
+      logo: `https://cdn.simpleicons.org/grafana`,
+      proficiency: null,
       description: null
     }
   ],
-  Research: [
+  "数据与中间件": [
     {
-      name: `Machine Learning`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/2/2a/OOjs_UI_icon_academic-progressive.svg`,
-      proficiency: `2020 - Current`,
-      description: `General machine learning methods and applied research.`
+      name: `Redis`,
+      logo: `https://cdn.simpleicons.org/redis`,
+      proficiency: null,
+      description: null
     },
     {
-      name: `Representation Learning`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/2/2a/OOjs_UI_icon_academic-progressive.svg`,
-      proficiency: `2024 - 2025`,
-      description: `Learning meaningful embeddings and feature representations from data.`
+      name: `MySQL`,
+      logo: `https://cdn.simpleicons.org/mysql`,
+      proficiency: null,
+      description: null
+    },
+    {
+      name: `PostgreSQL`,
+      logo: `https://cdn.simpleicons.org/postgresql`,
+      proficiency: null,
+      description: null
+    },
+    {
+      name: `Kafka`,
+      logo: `https://cdn.simpleicons.org/apachekafka`,
+      proficiency: null,
+      description: null
     }
   ],
-  Language: [
+  "认证与安全": [
     {
-      name: `English`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/e/e0/OOjs_UI_icon_language-ltr-progressive.svg`,
-      proficiency: `Fluent`,
-      description: `Professional working proficiency.`
+      name: `OAuth2`,
+      logo: null,
+      proficiency: null,
+      description: null
     },
     {
-      name: `Taiwanese Hokkien`,
-      logo: `https://upload.wikimedia.org/wikipedia/commons/e/e0/OOjs_UI_icon_language-ltr-progressive.svg`,
-      proficiency: `Native`,
-      description: `Native fluency.`
+      name: `OIDC`,
+      logo: null,
+      proficiency: null,
+      description: null
+    },
+    {
+      name: `RBAC`,
+      logo: null,
+      proficiency: null,
+      description: null
+    }
+  ],
+  "AI 与 Agent": [
+    {
+      name: `RAG`,
+      logo: null,
+      proficiency: null,
+      description: null
+    },
+    {
+      name: `MCP`,
+      logo: null,
+      proficiency: null,
+      description: null
+    },
+    {
+      name: `ReAct`,
+      logo: null,
+      proficiency: null,
+      description: null
     }
   ]
 };

@@ -8,12 +8,12 @@ export const homepage = {
     {
       name: `Experience`,
       variant: `default`,
-      enabled: true
+      enabled: false
     },
     {
       name: `Publications`,
       variant: `default`,
-      enabled: true
+      enabled: false
     },
     {
       name: `Projects`,
@@ -28,12 +28,12 @@ export const homepage = {
     {
       name: `Talks`,
       variant: `default`,
-      enabled: true
+      enabled: false
     },
     {
       name: `Services`,
       variant: `default`,
-      enabled: true
+      enabled: false
     }
   ]
 };

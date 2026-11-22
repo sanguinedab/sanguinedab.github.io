@@ -10,7 +10,7 @@ interface ServiceSectionProps {
   variant?: string;
 }
 
-const TITLE = "Professional Services";
+const TITLE = "专业服务";
 
 export default function ServicesSection({
   variant = "default",
@@ -52,7 +52,7 @@ function ServicesContent() {
   // group services by category
   const groupedServices = services.reduce<Record<string, typeof services>>(
     (acc, item) => {
-      const cat = item.category || "Other";
+      const cat = item.category || "其他";
       if (!acc[cat]) acc[cat] = [];
       acc[cat].push(item);
       return acc;
@@ -117,7 +117,7 @@ function ServicesContent() {
                         size="sm"
                         variant="outline"
                         className="flex flex-row items-center cursor-pointer gap-1 h-6"
-                        title="Open link"
+                        title="打开链接"
                       >
                         <a
                           href={item.link}
@@ -136,7 +136,7 @@ function ServicesContent() {
                         variant="outline"
                         className="flex flex-row items-center cursor-pointer gap-1 h-6"
                         onClick={() => togglePreview(key)}
-                        title="Show preview"
+                        title="查看预览"
                       >
                         <FaRegImage />
                         <span className="hidden md:inline">Preview</span>

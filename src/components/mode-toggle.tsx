@@ -17,7 +17,7 @@ export const DarkModeToggleButton = React.forwardRef<
   };
 
   const tooltipMessage =
-    theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode";
+    theme === "dark" ? "切换到浅色模式" : "切换到深色模式";
 
   return (
     <SidebarMenuButton tooltip={tooltipMessage} asChild>
@@ -34,7 +34,7 @@ export const DarkModeToggleButton = React.forwardRef<
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
         </div>
         <span className="group-data-[collapsible=icon]:hidden leading-tight">
-          {theme === "dark" ? "Dark" : "Light"}
+          {theme === "dark" ? "深色" : "浅色"}
         </span>
       </Button>
     </SidebarMenuButton>

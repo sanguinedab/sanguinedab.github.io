@@ -11,7 +11,7 @@ interface TalksSectionProps {
   variant?: string;
 }
 
-const TITLE = "Presentations / Talks";
+const TITLE = "分享与演讲";
 
 export default function TalksSection({
   variant = "default",
@@ -53,7 +53,7 @@ function TalksContent() {
   // group talks by category
   const groupedTalks = talks.reduce<Record<string, typeof talks>>(
     (acc, item) => {
-      const cat = item.category || "Other";
+      const cat = item.category || "其他";
       if (!acc[cat]) acc[cat] = [];
       acc[cat].push(item);
       return acc;
@@ -118,7 +118,7 @@ function TalksContent() {
                         size="sm"
                         variant="outline"
                         className="flex flex-row items-center cursor-pointer gap-1 h-6"
-                        title="Open link"
+                        title="打开链接"
                       >
                         <a
                           href={item.link}
@@ -137,7 +137,7 @@ function TalksContent() {
                         variant="outline"
                         className="flex flex-row items-center cursor-pointer gap-1 h-6"
                         onClick={() => togglePreview(key)}
-                        title="Show preview"
+                        title="查看预览"
                       >
                         <FaRegImage />
                         <span className="hidden md:inline">Preview</span>

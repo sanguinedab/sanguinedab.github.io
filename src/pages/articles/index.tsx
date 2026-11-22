@@ -12,7 +12,18 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { usePageTitle } from "@/hooks/use-pagetitle";
-import ArticlesData from "@/data/generated/articles.json";
+import ArticlesJson from "@/data/generated/articles.json";
+
+type ArticleMeta = {
+  title: string;
+  summary: string | null;
+  tags: string[] | null;
+  created_at: string;
+  updated_at: string;
+  draft: boolean;
+};
+
+const ArticlesData = ArticlesJson as Record<string, ArticleMeta>;
 
 const validSorts = ["updated", "created"] as const;
 type SortByType = (typeof validSorts)[number];
@@ -22,7 +33,7 @@ const allTags = Array.from(
 ).sort();
 
 export default function ArticlesPage() {
-  usePageTitle("Articles");
+  usePageTitle("文章");
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -46,9 +57,7 @@ export default function ArticlesPage() {
     navigate({ search: params.toString() }, { replace: true });
   };
 
-  const filteredArticles = (
-    Object.keys(ArticlesData) as (keyof typeof ArticlesData)[]
-  )
+  const filteredArticles = Object.keys(ArticlesData)
     .filter((article_name) => {
       const article = ArticlesData[article_name];
       if (article.draft === true) return false;
@@ -78,7 +87,7 @@ export default function ArticlesPage() {
       <div className="w-full max-w-6xl space-y-10">
         <div className="flex flex-row justify-center items-center gap-4 text-4xl font-semibold">
           <FaNewspaper />
-          Articles
+          文章
         </div>
 
         <div className="flex justify-between flex-wrap gap-2 items-center mx-2 sm:mx-6 my-1 relative -top-2">
@@ -88,6 +97,15 @@ export default function ArticlesPage() {
 
         <Separator />
 
+        {filteredArticles.length === 0 ? (
+          <Card className="items-center justify-center gap-3 py-16 text-center">
+            <FaNewspaper className="h-8 w-8 text-muted-foreground" aria-hidden />
+            <p className="font-medium">暂无文章</p>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              文章还在整理中，稍后再来看看。
+            </p>
+          </Card>
+        ) : (
         <div className="grid grid-cols-1 w-full gap-4 px-2 sm:px-6">
           {filteredArticles.map((articleName) => (
             <ArticleCard
@@ -97,6 +115,7 @@ export default function ArticlesPage() {
             />
           ))}
         </div>
+        )}
       </div>
     </div>
   );
@@ -111,13 +130,13 @@ function TagFilter({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <label>Filter by tag:</label>
+      <label>按标签筛选：</label>
       <Select value={tagFilter} onValueChange={setTagFilter}>
         <SelectTrigger className="w-[180px] cursor-pointer">
-          <SelectValue placeholder="Tag" />
+          <SelectValue placeholder="标签" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">🏷️ All Tags</SelectItem>
+          <SelectItem value="all">🏷️ 全部标签</SelectItem>
           {allTags.map((tag) => (
             <SelectItem key={tag} value={tag}>
               {tag}
@@ -133,7 +152,7 @@ function TagFilter({
           onClick={() => setTagFilter("all")}
           className="px-2 text-sm cursor-pointer text-muted-foreground"
         >
-          Clear filter ✕
+          清除筛选 ✕
         </Button>
       )}
     </div>
@@ -149,14 +168,14 @@ function SortSelector({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <label>Sort by:</label>
+      <label>排序：</label>
       <Select value={sortBy} onValueChange={setSortBy}>
         <SelectTrigger className="w-[160px] cursor-pointer">
-          <SelectValue placeholder="Sort by" />
+          <SelectValue placeholder="排序" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="updated">🕒 Last Updated</SelectItem>
-          <SelectItem value="created">📅 Created Time</SelectItem>
+          <SelectItem value="updated">🕒 最近更新</SelectItem>
+          <SelectItem value="created">📅 创建时间</SelectItem>
         </SelectContent>
       </Select>
     </div>
@@ -167,7 +186,7 @@ function ArticleCard({
   articleName,
   setTagFilter,
 }: {
-  articleName: keyof typeof ArticlesData;
+  articleName: string;
   setTagFilter: (val: string) => void;
 }) {
   const article = ArticlesData[articleName];
@@ -182,14 +201,14 @@ function ArticleCard({
         >
           <Link
             to={`/articles/${articleName}`}
-            aria-label={`Read full article: ${article.title}`}
+            aria-label={`阅读全文：${article.title}`}
           >
             {article.title}
           </Link>
         </Button>
 
         <p className="text-sm text-muted-foreground line-clamp-3">
-          {article.summary || "No summary available."}
+          {article.summary || "暂无摘要。"}
         </p>
 
         {article.tags && article.tags.length > 0 && (
@@ -210,9 +229,9 @@ function ArticleCard({
 
         <div className="flex justify-between items-center text-sm text-muted-foreground mt-auto pt-2">
           <span>
-            Published {formatDate(article.created_at)}
+            发布于 {formatDate(article.created_at)}
             {!isSameDate(article.created_at, article.updated_at) && (
-              <> • Updated {formatDate(article.updated_at)}</>
+              <> • 更新于 {formatDate(article.updated_at)}</>
             )}
           </span>
           <Button
@@ -222,9 +241,9 @@ function ArticleCard({
           >
             <Link
               to={`/articles/${articleName}`}
-              aria-label={`Read full article: ${article.title}`}
+              aria-label={`阅读全文：${article.title}`}
             >
-              Read More →
+              阅读全文 →
             </Link>
           </Button>
         </div>
@@ -234,7 +253,7 @@ function ArticleCard({
 }
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString(undefined, {
+  return new Date(dateStr).toLocaleDateString("zh-CN", {
     year: "numeric",
     month: "short",
     day: "numeric",

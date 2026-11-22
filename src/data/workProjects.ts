@@ -6,6 +6,7 @@ export const workProjects: ShowcaseProject[] = [
     title: "企业 RAG 问答平台",
     period: "2024.08 – 至今",
     role: "DevOps",
+    tags: ["RAG", "MCP", "Kubernetes", "GitOps", "Helm"],
     points: [
       "负责平台后端架构设计，涵盖代码模块拆分与开发、微服务部署，保障系统的稳定性与可扩展性",
       "基于开源 AI Workflow 框架二次开发，落地 RAG 检索增强相关流程",
@@ -20,6 +21,7 @@ export const workProjects: ShowcaseProject[] = [
     title: "分布式模型训练平台",
     period: "2024.03 – 2024.07",
     role: "DevOps",
+    tags: ["Kubernetes", "Ansible", "RDMA", "Ceph", "可观测性"],
     points: [
       "基于 Ansible 实现一键部署：覆盖 Kubernetes 集群、显卡与网卡驱动、container-runtime、存储引擎、ingress-controller、Harbor、Prometheus、MetalLB 等基础组件及训练平台服务，简化部署流程并提升交付效率",
       "调研并设计 NFS、BeeGFS、CephFS 等分布式存储方案，通过 StorageClass + provisioner/CSI 自动管理 PVC，优化存储管理",
@@ -35,6 +37,7 @@ export const workProjects: ShowcaseProject[] = [
     title: "Aloha 机器人原型复现",
     period: "2024.01 – 2024.03",
     role: "开发",
+    tags: ["ROS2", "Python", "具身智能"],
     summary: "复现具身机器人论文项目 Mobile ALOHA",
     points: [
       "调研具身机器人技术方案，搭建机械臂、摄像头、控制面板等实验场景",
@@ -46,6 +49,7 @@ export const workProjects: ShowcaseProject[] = [
     title: "智能瑕疵检测系统",
     period: "2023.06 – 2024.03",
     role: "后端开发 / 测试 / 交付",
+    tags: ["计算机视觉", "Redis", "工业质检"],
     summary: "面向传统纺织等工业场景，基于目标检测算法提供瑕疵检测解决方案",
     points: [
       "支撑项目常规需求迭代与版本交付",
@@ -57,6 +61,7 @@ export const workProjects: ShowcaseProject[] = [
     title: "AIGC 图像生成相关业务",
     period: "2022.11 – 2023.05",
     role: "后端开发",
+    tags: ["AIGC", "Stable Diffusion", "工作流"],
     points: [
       "统一接入层与配置层协议",
       "支持 SD 与算法原子化部署，优化模型首次启动延迟",
@@ -67,6 +72,7 @@ export const workProjects: ShowcaseProject[] = [
     title: "DevOps 平台 - 告警通知",
     period: "2022.07 – 2022.09",
     role: "后端开发",
+    tags: ["Prometheus", "飞书", "微服务"],
     points: [
       "按微服务拆分指标监控、适配器、策略中心与通知服务",
       "统一适配 GCP webhook、Sentry webhook、Prometheus 等告警格式",
@@ -78,6 +84,7 @@ export const workProjects: ShowcaseProject[] = [
     title: "统一身份认证系统",
     period: "2021.06 – 2022.05",
     role: "后端开发",
+    tags: ["OAuth2", "OIDC", "RBAC", "Go", "Vitess"],
     points: [
       "基于 OAuth2.0 与 JWT 构建身份认证体系，支持 authorization_code、implicit、client_credentials 及 OIDC 等多种模式",
       "基于 RBAC 实现灵活可用的权限控制体系",

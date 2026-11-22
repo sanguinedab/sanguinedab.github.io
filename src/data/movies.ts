@@ -1,22 +1,17 @@
 export const movies = [
   {
-    title: `[Movie Title]`,
-    posterImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Example_en.svg/1280px-Example_en.svg.png`,
-    note: `[Movie Description]`
-  },
-  {
-    title: `The Shawshank Redemption`,
+    title: `肖申克的救赎`,
     posterImage: `https://media.themoviedb.org/t/p/w440_and_h660_face/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg`,
-    note: `A timeless story of hope and perseverance that reminds me to stay resilient, no matter the odds.`
+    note: `关于希望与坚持的经典故事，提醒我在任何处境下都别放弃。`
   },
   {
-    title: `Interstellar`,
+    title: `星际穿越`,
     posterImage: `https://image.tmdb.org/t/p/original/mS4EvhsrT0SQZOlWrQEzWI5KiUa.jpg`,
-    note: `Blends science, love, and human ambition in a way that sparks my curiosity about the universe and our place in it.`
+    note: `把科学、爱与人类野心揉在一起，总能勾起我对宇宙和自身位置的好奇。`
   },
   {
-    title: `La La Land`,
+    title: `爱乐之城`,
     posterImage: `https://image.tmdb.org/t/p/original/pfr9dwWqANfF6XohNZ1ANtcXSq2.jpg`,
-    note: `A beautiful reminder of dreams, sacrifice, and the bittersweet balance between passion and reality.`
+    note: `关于梦想、牺牲，以及热爱与现实之间那种苦涩平衡的温柔提醒。`
   }
 ];

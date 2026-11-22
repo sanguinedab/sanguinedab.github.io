@@ -1,36 +1,31 @@
-import { LuUser, LuWrench, LuLibraryBig, LuNewspaper, LuClapperboard, LuMusic } from "react-icons/lu";
+import { LuUser, LuWrench, LuNewspaper, LuClapperboard, LuMusic } from "react-icons/lu";
 
 export const sidebar = {
-  userName: `[Your Name]`,
-  profileImage: `https://github.com/shadcn.png`,
+  userName: `sanguinedab`,
+  profileImage: `https://github.com/sanguinedab.png`,
   sections: [
     {
-      title: `About Me`,
+      title: `关于我`,
       url: ``,
       icon: LuUser
     },
     {
-      title: `Projects`,
+      title: `项目`,
       url: `projects`,
       icon: LuWrench
     },
     {
-      title: `Publications`,
-      url: `publications`,
-      icon: LuLibraryBig
-    },
-    {
-      title: `Articles`,
+      title: `文章`,
       url: `articles`,
       icon: LuNewspaper
     },
     {
-      title: `Movies`,
+      title: `电影`,
       url: `movies`,
       icon: LuClapperboard
     },
     {
-      title: `Music`,
+      title: `音乐`,
       url: `music`,
       icon: LuMusic
     }

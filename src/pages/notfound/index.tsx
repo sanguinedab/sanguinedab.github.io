@@ -5,17 +5,17 @@ import { Button } from "@/components/ui/button";
 import { usePageTitle } from "@/hooks/use-pagetitle";
 
 export default function NotFoundPage() {
-  usePageTitle("Page Not Found");
+  usePageTitle("页面不存在");
 
   return (
     <div className="flex flex-col items-center justify-center h-full space-y-4">
       <h1 className="text-4xl sm:text-5xl font-bold">404</h1>
       <p className="text-base sm:text-lg text-muted-foreground text-center">
-        Oops! The page you're looking for doesn't exist.
+        抱歉，你访问的页面不存在。
       </p>
       <Button asChild variant="outline" className="mt-2 gap-1">
         <Link to="/">
-          <FaArrowLeft className="w-4 h-4" /> Back to Home
+          <FaArrowLeft className="w-4 h-4" /> 返回首页
         </Link>
       </Button>
     </div>

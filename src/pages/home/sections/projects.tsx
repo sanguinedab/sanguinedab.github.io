@@ -17,7 +17,7 @@ export default function ProjectsSection() {
     <div className="space-y-6">
       <div className="flex flex-row justify-center items-center gap-2 text-plus font-semibold">
         <FaWrench />
-        Projects
+        项目
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -35,7 +35,7 @@ export default function ProjectsSection() {
             className="gap-1 text-muted-foreground"
           >
             <Link to="/projects">
-              View all
+              查看全部
               <FaArrowRight className="w-4 h-4" />
             </Link>
           </Button>
@@ -75,7 +75,7 @@ function ProjectCard({
             {repoData.previewImage ? (
               <img
                 src={repoData.previewImage}
-                alt={repoData.name || "Project image"}
+                alt={repoData.name || "项目图片"}
                 className="w-full h-full object-cover"
                 style={{ overflowClipMargin: "unset" }}
                 loading="lazy"
@@ -83,10 +83,10 @@ function ProjectCard({
             ) : (
               <div className="flex flex-col items-center justify-center p-4 w-full h-full bg-muted">
                 <span className="text-lg font-semibold opacity-80 text-center">
-                  {repoData.name || "Unnamed Project"}
+                  {repoData.name || "未命名项目"}
                 </span>
                 <span className="text-sm text-muted-foreground text-center">
-                  Image not available
+                  暂无图片
                 </span>
               </div>
             )}
@@ -113,7 +113,7 @@ function ProjectCard({
           </div>
 
           <p className="text-sm text-muted-foreground line-clamp-2">
-            {repoData.description || "Details unavailable"}
+            {repoData.description || "暂无描述"}
           </p>
 
           {repoData.topics?.length ? (
@@ -137,7 +137,7 @@ function ProjectCard({
           <div className="flex flex-row items-center justify-between text-muted-foreground mt-auto pt-2">
             <div className="flex items-center gap-2">
               <p className="text-sm">
-                Language: {repoData.language || "Unknown"}
+                语言：{repoData.language || "未知"}
               </p>
               {repoData.stargazers_count !== null && (
                 <a

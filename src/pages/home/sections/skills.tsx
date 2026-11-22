@@ -8,11 +8,11 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { skills } from "@/data/skills";
 
-const TITLE = "Skills";
-const CATEGORIES = ["All", ...Object.keys(skills)];
+const TITLE = "技能";
+const CATEGORIES = ["全部", ...Object.keys(skills)];
 
 export default function SkillsSection() {
-  const [active, setActive] = useState("All");
+  const [active, setActive] = useState("全部");
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
   const toggleExpand = (key: string) => {
@@ -29,7 +29,7 @@ export default function SkillsSection() {
   }, []);
 
   const filtered =
-    active === "All"
+    active === "全部"
       ? allSkills
       : allSkills.filter((s) => s.category === active);
 
@@ -43,7 +43,7 @@ export default function SkillsSection() {
       <div className="flex flex-row gap-4">
         <div className="w-52 flex flex-col gap-1">
           <span className="text-sm font-medium text-muted-foreground mb-2">
-            Categories
+            分类
           </span>
 
           {CATEGORIES.map((cat) => (
@@ -64,8 +64,7 @@ export default function SkillsSection() {
           <Separator className="my-4" />
 
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Filter skills by category to explore my technical and research
-            background.
+            按分类筛选，快速了解我的技术方向与项目经验。
           </p>
         </div>
 
@@ -118,7 +117,7 @@ export default function SkillsSection() {
                             onClick={() => toggleExpand(key)}
                             className="text-xs leading-none underline underline-offset-2 text-muted-foreground hover:text-foreground cursor-pointer"
                           >
-                            {isExpanded ? "Less" : "More"}
+                            {isExpanded ? "收起" : "展开"}
                           </button>
                         </div>
                       )}

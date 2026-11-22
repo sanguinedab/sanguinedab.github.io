@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 
 export const load = <P extends object>(Component: React.ComponentType<P>) => {
   return (props: P) => (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>加载中…</div>}>
       <Component {...props} />
     </Suspense>
   );

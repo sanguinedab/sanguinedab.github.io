@@ -1,10 +1,9 @@
 # =====================================================
-# Website Configuration
-# This section contains general information about your website.
+# 站点配置
 # =====================================================
 
 site:
-  name: "Showlit"
+  name: "sanguinedab"
   repoUrl: "https://github.com/sanguinedab/sanguinedab.github.io"
-  description: "A short description"
-  author: "Your Name"
+  description: "后端工程师 · DevOps · AI Agent"
+  author: "sanguinedab"

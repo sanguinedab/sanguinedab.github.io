@@ -12,49 +12,31 @@
 # =====================================================
 
 profile:
-  name: "[Your Name]"
-  headline: "Student @ [Your University]"
-  email: "your-email@gmail.com"
-  location: null
-  profileImage: "https://github.com/pm25.png"
+  name: "sanguinedab"
+  headline: "后端工程师 · DevOps · AI Agent"
+  email: "hello@example.com"
+  location: "上海 · 中国"
+  profileImage: "https://github.com/sanguinedab.png"
 
   links:
-    - name: "LinkedIn"
-      url: "https://www.linkedin.com/in/[your-linkedin]"
-      icon:
-        name: "FaLinkedin"
-        package: "react-icons/fa6"
-
-    - name: "Google Scholar"
-      url: "https://scholar.google.com/citations?user=[your-id]"
-      icon:
-        name: "FaGoogleScholar"
-        package: "react-icons/fa6"
-
-    - name: "Résumé"
-      url: "/pdf/sample-resume.pdf"
-      icon:
-        name: "FaRegIdBadge"
-        package: "react-icons/fa6"
-
-    - name: "Github"
-      url: "https://github.com/[your-github]"
+    - name: "GitHub"
+      url: "https://github.com/sanguinedab"
       icon:
         name: "FaGithub"
         package: "react-icons/fa6"
 
-    - name: "Facebook"
-      url: "https://www.facebook.com/[your-facebook]"
+    - name: "邮箱"
+      url: "mailto:hello@example.com"
       icon:
-        name: "FaSquareFacebook"
+        name: "FaRegEnvelope"
         package: "react-icons/fa6"
 
-  # you can use HTML syntax here (e.g. <br/>, <a>, <strong>, ...)
+  # 这里可以用 HTML 标签（如 <br/>、<a>、<strong> 等）
   biography: |
-    Hi! I'm <strong>[Your Name]</strong>, a <em>[Your Title]</em> passionate about <em>[field or topic]</em>. Currently, I work as <em>[current role]</em> at <em>[organization]</em>, where I <em>[briefly describe your work or mission]</em>. 
-    With a background in <em>[academic or professional background]</em>, I've developed strong interests in <em>[key interests or specialties]</em> and have contributed to projects like <i>[example project]</i> and <i>[another example]</i>, all focused on <em>[broader goal or impact]</em>.
+    5 年后端与 DevOps 经验，做过统一身份认证、DevOps 告警平台、AIGC 图像生成和工业瑕疵检测，也做过 Kubernetes 分布式训练平台与具身机器人复现。
+    目前在做企业 RAG 问答平台，负责后端架构、微服务、GitOps / CI/CD、MCP 工具集成与自动化交付；日常用 Go 和 Python，熟悉 Kubernetes、可观测性与云原生这套技术栈。
     <div class="my-2"></div>
-    Outside of work, I enjoy <em>[hobbies or personal interests]</em>, which inspire creativity and keep me energized. Thanks for visiting! Feel free to <a href="mailto:[your-email@example.com]" target="_blank" rel="noopener noreferrer">reach out</a> to connect.
+    我相信工程师的价值在于把一件事从头到尾跑通：设计、开发、部署、观测。
 
 # # =====================================================
 # # 🎓 Education Section
@@ -160,77 +142,107 @@ services:
 # # =====================================================
 
 skills:
-  Programming:
-    - name: "[Name]"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg"
-      proficiency: "[Proficiency]"
-      description: "[Description]"
+  语言:
+    - name: "Go"
+      logo: "https://cdn.simpleicons.org/go"
+      proficiency: null
+      description: null
 
     - name: "Python"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
-      proficiency: Experienced
+      logo: "https://cdn.simpleicons.org/python"
+      proficiency: null
       description: null
 
-    - name: "JavaScript"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
-      proficiency: Fluent
+    - name: "Java"
+      logo: "https://cdn.simpleicons.org/openjdk"
+      proficiency: null
       description: null
 
-  Web:
-    - name: "React"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/3/30/React_Logo_SVG.svg"
-      proficiency: Advanced
+    - name: "TypeScript"
+      logo: "https://cdn.simpleicons.org/typescript"
+      proficiency: null
       description: null
 
-    - name: "Typescript"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/f/f5/Typescript.svg"
-      proficiency: Fluent
+  云原生:
+    - name: "Kubernetes"
+      logo: "https://cdn.simpleicons.org/kubernetes"
+      proficiency: null
       description: null
 
-    - name: "TailwindCSS"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
-      proficiency: Fluent
+    - name: "Docker"
+      logo: "https://cdn.simpleicons.org/docker"
+      proficiency: null
       description: null
 
-    - name: "Next.js"
-      logo: "https://logo.svgcdn.com/devicon/nextjs-original.png"
-      proficiency: Fluent
+    - name: "Helm"
+      logo: "https://cdn.simpleicons.org/helm"
+      proficiency: null
       description: null
 
-  Machine Learning:
-    - name: "PyTorch"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg"
-      proficiency: Experienced
+    - name: "Ansible"
+      logo: "https://cdn.simpleicons.org/ansible"
+      proficiency: null
       description: null
 
-    - name: "TensorFlow"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg"
-      proficiency: Fluent
+    - name: "Prometheus"
+      logo: "https://cdn.simpleicons.org/prometheus"
+      proficiency: null
       description: null
 
-    - name: "Keras"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Keras_logo.svg"
-      proficiency: Fluent
+    - name: "Grafana"
+      logo: "https://cdn.simpleicons.org/grafana"
+      proficiency: null
       description: null
 
-  Research:
-    - name: "Machine Learning"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/OOjs_UI_icon_academic-progressive.svg"
-      proficiency: 2020 - Current
-      description: "General machine learning methods and applied research."
+  数据与中间件:
+    - name: "Redis"
+      logo: "https://cdn.simpleicons.org/redis"
+      proficiency: null
+      description: null
 
-    - name: "Representation Learning"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/OOjs_UI_icon_academic-progressive.svg"
-      proficiency: 2024 - 2025
-      description: "Learning meaningful embeddings and feature representations from data."
+    - name: "MySQL"
+      logo: "https://cdn.simpleicons.org/mysql"
+      proficiency: null
+      description: null
 
-  Language:
-    - name: "English"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/OOjs_UI_icon_language-ltr-progressive.svg"
-      proficiency: Fluent
-      description: "Professional working proficiency."
+    - name: "PostgreSQL"
+      logo: "https://cdn.simpleicons.org/postgresql"
+      proficiency: null
+      description: null
 
-    - name: "Taiwanese Hokkien"
-      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/OOjs_UI_icon_language-ltr-progressive.svg"
-      proficiency: Native
-      description: "Native fluency."
+    - name: "Kafka"
+      logo: "https://cdn.simpleicons.org/apachekafka"
+      proficiency: null
+      description: null
+
+  认证与安全:
+    - name: "OAuth2"
+      logo: null
+      proficiency: null
+      description: null
+
+    - name: "OIDC"
+      logo: null
+      proficiency: null
+      description: null
+
+    - name: "RBAC"
+      logo: null
+      proficiency: null
+      description: null
+
+  AI 与 Agent:
+    - name: "RAG"
+      logo: null
+      proficiency: null
+      description: null
+
+    - name: "MCP"
+      logo: null
+      proficiency: null
+      description: null
+
+    - name: "ReAct"
+      logo: null
+      proficiency: null
+      description: null

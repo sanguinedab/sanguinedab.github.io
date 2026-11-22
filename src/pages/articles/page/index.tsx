@@ -60,17 +60,17 @@ export default function Article() {
         if (err instanceof Error) {
           if (err.message === "NOT_FOUND") {
             setError(`The article "${slug}" does not exist.`);
-            setMetadata({ title: "Article Not Found" });
+            setMetadata({ title: "文章不存在" });
           } else if (err.message === "PARSE_ERROR") {
             setError(`The article "${slug}" has invalid formatting.`);
-            setMetadata({ title: "Parse Error" });
+            setMetadata({ title: "格式错误" });
           } else {
-            setError("Unable to load the article. Please try again later.");
-            setMetadata({ title: "Error" });
+            setError("文章加载失败，请稍后重试。");
+            setMetadata({ title: "出错了" });
           }
         } else {
-          setError("Unexpected error occurred.");
-          setMetadata({ title: "Error" });
+          setError("发生未知错误。");
+          setMetadata({ title: "出错了" });
         }
       } finally {
         setLoading(false);
@@ -85,12 +85,12 @@ export default function Article() {
       <div className="flex justify-center">
         <div className="text-center max-w-6xl w-full bg-muted rounded-md space-y-4 p-6 sm:p-12 border shadow-sm">
           <div className="text-4xl font-semibold">
-            {metadata.title || "Error"}
+            {metadata.title || "出错了"}
           </div>
           <p>{error}</p>
           <Button asChild variant="outline" className="mt-2 gap-1">
             <Link to="/articles">
-              <FaArrowLeft className="w-4 h-4" /> Back to Articles
+              <FaArrowLeft className="w-4 h-4" /> 返回文章列表
             </Link>
           </Button>
         </div>
@@ -122,7 +122,7 @@ export default function Article() {
             className="gap-1 text-muted-foreground"
           >
             <Link to="/articles">
-              <FaArrowLeft className="w-4 h-4" /> Back to Articles
+              <FaArrowLeft className="w-4 h-4" /> 返回文章列表
             </Link>
           </Button>
         </div>
@@ -160,7 +160,7 @@ function ArticleComments() {
       emitMetadata="0"
       inputPosition="top"
       theme={giscusTheme}
-      lang="en"
+      lang="zh-CN"
       loading="lazy"
     />
   );

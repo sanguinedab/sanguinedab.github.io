@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { movies } from "@/data/movies";
 
 export default function MoviesPage() {
-  usePageTitle("Movies");
+  usePageTitle("电影");
 
   return (
     <div className="flex flex-1 flex-col items-center gap-10">
@@ -13,11 +13,11 @@ export default function MoviesPage() {
         <div className="space-y-4">
           <div className="flex flex-row justify-center items-center gap-4 text-4xl font-semibold">
             <FaFilm />
-            Movies
+            电影
           </div>
 
           <p className="text-center text-lg text-muted-foreground leading-relaxed italic opacity-80">
-            Some of my favorite movies
+            一些我喜欢的电影
           </p>
         </div>
 

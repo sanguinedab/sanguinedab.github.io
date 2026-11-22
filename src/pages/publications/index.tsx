@@ -13,14 +13,14 @@ import { usePageTitle } from "@/hooks/use-pagetitle";
 import { publications } from "@/data/publications";
 
 export default function PublicationsPage() {
-  usePageTitle("Publications");
+  usePageTitle("论文");
 
   return (
     <div className="flex flex-1 flex-col items-center gap-10">
       <div className="w-full max-w-6xl">
         <div className="flex flex-row justify-center items-center gap-4 text-4xl font-semibold">
           <IoLibrary />
-          Publications
+          论文
         </div>
 
         <div className="w-full px-2 sm:px-6 overflow-hidden mt-10">
@@ -28,9 +28,9 @@ export default function PublicationsPage() {
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[calc(100%-50px)]">
-                  Publication
+                  论文
                 </TableHead>
-                <TableHead className="w-[46px] text-right">Year</TableHead>
+                <TableHead className="w-[46px] text-right">年份</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
