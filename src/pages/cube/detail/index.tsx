@@ -101,35 +101,76 @@ export default function CubeStagePage() {
             <p className="text-sm text-muted-foreground">{stage.note}</p>
           ) : null}
 
-          <div className="space-y-3">
+          <div className="grid gap-3 md:grid-cols-2">
             {stage.cases.map((item) => (
-              <Card key={item.name} className="gap-2 p-4 sm:p-5">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="text-sm font-semibold">{item.name}</h3>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => copy(item.alg)}
-                    className="gap-1.5 text-muted-foreground"
-                  >
-                    <FaRegCopy className="h-3.5 w-3.5" />
-                    复制
-                  </Button>
+              <Card key={item.id} className="gap-2 p-4">
+                <div className="flex items-start gap-3">
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt={`${item.id} 图示`}
+                      className="h-16 w-16 shrink-0 rounded-sm bg-white p-1"
+                      loading="lazy"
+                    />
+                  ) : null}
+                  <div className="min-w-0 flex-1 space-y-1.5">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <h3 className="text-sm font-semibold">
+                        {item.id}
+                        {item.name ? (
+                          <span className="ml-1.5 font-normal text-muted-foreground">
+                            {item.name}
+                          </span>
+                        ) : null}
+                      </h3>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => copy(item.alg)}
+                        className="h-7 gap-1.5 px-2 text-muted-foreground"
+                      >
+                        <FaRegCopy className="h-3.5 w-3.5" />
+                        复制
+                      </Button>
+                    </div>
+                    <code className="block break-words font-mono text-sm leading-relaxed tracking-wide text-emerald-300">
+                      {item.alg}
+                    </code>
+                    {item.note ? (
+                      <p className="text-xs leading-relaxed text-muted-foreground">
+                        {item.note}
+                      </p>
+                    ) : null}
+                  </div>
                 </div>
-                <code className="block font-mono text-base tracking-wide text-emerald-300">
-                  {item.alg}
-                </code>
-                {item.note ? (
-                  <p className="text-xs leading-relaxed text-muted-foreground">
-                    {item.note}
-                  </p>
-                ) : null}
               </Card>
             ))}
           </div>
         </section>
       ) : null}
+
+      <p className="pt-2 text-xs leading-relaxed text-muted-foreground">
+        公式参考{" "}
+        <a
+          href="https://speedcube.de"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4 hover:text-foreground"
+        >
+          speedcube.de
+        </a>
+        ，图示来自{" "}
+        <a
+          href="https://github.com/cfgerr/20"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4 hover:text-foreground"
+        >
+          cfgerr/20
+        </a>
+        （MIT）。
+      </p>
     </div>
   );
 }
