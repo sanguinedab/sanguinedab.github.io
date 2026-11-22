@@ -10,6 +10,7 @@ const HomePage = loadLazy(() => import("@/pages/home"));
 const MoviesPage = loadLazy(() => import("@/pages/movies"));
 const MusicPage = loadLazy(() => import("@/pages/music"));
 const ProjectsPage = loadLazy(() => import("@/pages/projects"));
+const ProjectDetailPage = loadLazy(() => import("@/pages/projects/detail"));
 const PublicationsPage = loadLazy(() => import("@/pages/publications"));
 const ArticlesPage = loadLazy(() => import("@/pages/articles"));
 const ArticlePage = loadLazy(() => import("@/pages/articles/page"));
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="movies" element={<MoviesPage />} />
             <Route path="music" element={<MusicPage />} />
             <Route path="projects" element={<ProjectsPage />} />
+            <Route path="projects/:slug" element={<ProjectDetailPage />} />
             <Route path="publications" element={<PublicationsPage />} />
             <Route path="articles" element={<ArticlesPage />} />
             <Route path="/articles/:slug" element={<ArticlePage />} />

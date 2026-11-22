@@ -5,16 +5,15 @@ export const workProjects: ShowcaseProject[] = [
   {
     title: "企业 RAG 问答平台",
     period: "2024.08 – 至今",
-    role: "DevOps",
-    tags: ["RAG", "MCP"],
+    role: "平台架构 / DevOps",
+    tags: ["RAG", "多租户", "Kubernetes"],
+    slug: "enterprise-rag",
+    summary:
+      "从校园知识问答做到企业级多租户知识平台，经历三个阶段的架构演进。",
     points: [
-      "负责平台后端架构设计，涵盖代码模块拆分与开发、微服务部署，保障系统的稳定性与可扩展性",
-      "基于开源 AI Workflow 框架二次开发，落地 RAG 检索增强相关流程",
-      "实现多租户、RBAC 权限管理、用户认证、文档入库、许可证签发等核心业务逻辑",
-      "扩展工具调用模块，完成 MCP 集成并支持 MCP Server 对外暴露",
-      "参与线上问题排查、性能调优与客户支持，持续改善系统表现",
-      "从零搭建团队 GitOps 体系与 CI/CD 流程",
-      "基于 cloud-init 制作基础 ISO 镜像，结合 Helm Charts 实现客户环境自动化交付",
+      "2024.08 – 2025.02 校园百事通：基于 FastGPT 搭建面向高校的知识问答系统",
+      "2025.03 – 2025.12 开放平台：支持自由搭建工作流与 Agent 的开发者平台",
+      "2026.01 – 至今 企业问答：底层换成 qwenpaw agent，K8s Operator 支撑多租户隔离",
     ],
   },
   {

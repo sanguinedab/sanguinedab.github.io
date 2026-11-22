@@ -1,6 +1,11 @@
 import type { ReactNode } from "react";
-import { useNavigate, useSearchParams } from "react-router";
-import { FaWrench, FaCode, FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { Link, useNavigate, useSearchParams } from "react-router";
+import {
+  FaWrench,
+  FaCode,
+  FaArrowRight,
+  FaArrowUpRightFromSquare,
+} from "react-icons/fa6";
 
 import {
   Select,
@@ -230,7 +235,8 @@ function ProjectCard({
   project: ShowcaseProject;
   onTagClick: (tag: string) => void;
 }) {
-  const { title, period, role, summary, points, tags, cover, href } = project;
+  const { title, period, role, summary, points, tags, cover, href, slug } =
+    project;
   const number = workProjects.findIndex((item) => item.title === title) + 1;
   const coverStyle =
     COVER_STYLES[(number > 0 ? number - 1 : 0) % COVER_STYLES.length];
@@ -324,7 +330,16 @@ function ProjectCard({
             </div>
           ) : null}
 
-          {href ? (
+          {slug ? (
+            <div className="pt-1">
+              <Button asChild variant="outline" size="sm" className="gap-1.5">
+                <Link to={`/projects/${slug}`}>
+                  查看详情
+                  <FaArrowRight className="h-3 w-3" />
+                </Link>
+              </Button>
+            </div>
+          ) : href ? (
             <div className="pt-1">
               <Button asChild variant="outline" size="sm" className="gap-1.5">
                 <a href={href} target="_blank" rel="noopener noreferrer">
