@@ -33,8 +33,3 @@ sidebar:
         name: LuBox
         package: "react-icons/lu"
 
-    - title: 音乐
-      url: "music"
-      icon:
-        name: LuMusic
-        package: "react-icons/lu"

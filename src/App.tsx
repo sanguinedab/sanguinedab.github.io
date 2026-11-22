@@ -7,7 +7,6 @@ import { ScrollToTop } from "@/hooks/scroll-to-top";
 import { useGlobalMeta } from "./hooks/use-global-meta";
 
 const HomePage = loadLazy(() => import("@/pages/home"));
-const MusicPage = loadLazy(() => import("@/pages/music"));
 const ProjectsPage = loadLazy(() => import("@/pages/projects"));
 const CubePage = loadLazy(() => import("@/pages/cube"));
 const CubeStagePage = loadLazy(() => import("@/pages/cube/detail"));
@@ -27,7 +26,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="music" element={<MusicPage />} />
             <Route path="projects" element={<ProjectsPage />} />
             <Route path="cube" element={<CubePage />} />
             <Route path="cube/:slug" element={<CubeStagePage />} />
