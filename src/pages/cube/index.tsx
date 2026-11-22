@@ -16,9 +16,17 @@ export default function CubePage() {
             <FaCube />
             魔方
           </div>
-          <p className="text-center text-lg text-muted-foreground">
-            CFOP · 目前 sub-20，点击卡片查看每个阶段的公式
-          </p>
+          <div className="space-y-2 text-center">
+            <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-lg text-muted-foreground">
+              <span>CFOP · 目前</span>
+              <span className="rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-2xl font-bold tracking-tight text-emerald-400 shadow-[0_0_24px_-8px_rgba(16,185,129,0.9)]">
+                sub-20
+              </span>
+            </p>
+            <p className="text-sm text-muted-foreground">
+              点击卡片查看每个阶段的公式
+            </p>
+          </div>
         </div>
 
         <div className="grid w-full gap-4 px-2 sm:px-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
