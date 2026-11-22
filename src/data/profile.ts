@@ -3,8 +3,8 @@ import { FaGithub, FaRegEnvelope } from "react-icons/fa6";
 export const profile = {
   name: `sanguinedab`,
   headline: `服务端工程师 · DevOps · AI Agent`,
-  email: `hello@example.com`,
-  location: `上海 · 中国`,
+  email: `sanguinedab@gmail.com`,
+  location: `福建`,
   profileImage: `https://github.com/sanguinedab.png`,
   links: [
     {
@@ -14,7 +14,7 @@ export const profile = {
     },
     {
       name: `邮箱`,
-      url: `mailto:hello@example.com`,
+      url: `mailto:sanguinedab@gmail.com`,
       icon: FaRegEnvelope
     }
   ],
