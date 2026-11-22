@@ -6,7 +6,6 @@ import {
   FaBriefcase,
   FaDiagramProject,
   FaEye,
-  FaGithub,
   FaGlobe,
   FaGraduationCap,
   FaImage,
@@ -35,11 +34,10 @@ const CONTACTS = [
   { icon: FaLocationDot, text: profile.location },
   { icon: FaRegEnvelope, text: profile.email, href: `mailto:${profile.email}` },
   {
-    icon: FaGithub,
-    text: "github.com/sanguinedab",
-    href: "https://github.com/sanguinedab",
+    icon: FaGlobe,
+    text: "sanguinedab.github.io",
+    href: "https://sanguinedab.github.io",
   },
-  { icon: FaGlobe, text: "reason2m.com", href: "https://reason2m.com" },
 ];
 
 export default function ResumePage() {
