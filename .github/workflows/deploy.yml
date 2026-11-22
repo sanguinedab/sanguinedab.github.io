@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -39,15 +39,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Lint
+        run: pnpm lint
+
       - name: Build
         run: pnpm build
         env:
-          NEXT_TELEMETRY_DISABLED: "1"
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./dist
 
   deploy:
     environment:
