@@ -101,6 +101,32 @@ export default function Article() {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="prose dark:prose-invert max-w-6xl w-full bg-muted rounded-md overflow-hidden p-6 sm:p-12 border shadow-sm">
+        {metadata.title && (
+          <div className="not-prose mb-8 space-y-3">
+            <h1 className="text-3xl font-bold tracking-tight">
+              {metadata.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+              {metadata.created_at && (
+                <span>{formatDate(metadata.created_at)}</span>
+              )}
+              {metadata.tags?.length ? (
+                <div className="flex flex-wrap gap-1.5">
+                  {metadata.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-sm border px-2 py-0.5 text-xs"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+            <Separator className="mt-6" />
+          </div>
+        )}
+
         <ReactMarkdown
           rehypePlugins={[rehypeRaw]}
           remarkPlugins={[remarkGfm]}
@@ -129,6 +155,14 @@ export default function Article() {
       </div>
     </div>
   );
+}
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString("zh-CN", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 function ArticleComments() {

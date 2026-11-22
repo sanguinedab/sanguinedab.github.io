@@ -29,8 +29,8 @@ export const campus: CampusEntry[] = [
     ],
     links: [
       {
-        label: "当时的实现记录",
-        href: "https://blog.csdn.net/weixin_44958275/article/details/107900879",
+        label: "阅读全文",
+        href: "/articles/java-rpg-pokemon",
       },
     ],
   },
@@ -44,8 +44,8 @@ export const campus: CampusEntry[] = [
     ],
     links: [
       {
-        label: "智能合约部署记录",
-        href: "https://blog.csdn.net/weixin_44958275/article/details/114339167",
+        label: "阅读全文",
+        href: "/articles/web3py-smart-contract",
       },
     ],
   },

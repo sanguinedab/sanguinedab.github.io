@@ -8,6 +8,7 @@ export interface FrontMatter {
   cover_image?: string;
   author?: string;
   draft?: boolean;
+  tags?: string[];
 }
 
 export function parseFrontmatter(content: string): {

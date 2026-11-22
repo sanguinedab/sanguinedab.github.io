@@ -27,6 +27,12 @@ sidebar:
         name: LuGraduationCap
         package: "react-icons/lu"
 
+    - title: 文章
+      url: "articles"
+      icon:
+        name: LuNewspaper
+        package: "react-icons/lu"
+
     - title: 电影
       url: "movies"
       icon:

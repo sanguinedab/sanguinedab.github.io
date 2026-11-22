@@ -1,4 +1,5 @@
-import { FaGraduationCap, FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { FaGraduationCap, FaArrowRight } from "react-icons/fa6";
+import { Link } from "react-router";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -59,14 +60,10 @@ export default function CampusPage() {
                       size="sm"
                       className="gap-1.5"
                     >
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <Link to={link.href}>
                         {link.label}
-                        <FaArrowUpRightFromSquare className="h-3 w-3" />
-                      </a>
+                        <FaArrowRight className="h-3 w-3" />
+                      </Link>
                     </Button>
                   ))}
                 </div>

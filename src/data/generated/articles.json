@@ -1,1 +1,32 @@
-{}
+{
+    "web3py-smart-contract": {
+        "path": "public/articles/web3py-smart-contract/web3py-smart-contract.md",
+        "title": "使用 web3.py 部署智能合约并调用",
+        "created_at": "2021-03-03",
+        "summary": "在本地 geth 节点上用 solc 编译合约，再用 web3.py 部署和调用智能合约，以及 gas 不足导致部署失败的踩坑记录。",
+        "draft": false,
+        "tags": [
+            "区块链",
+            "智能合约",
+            "web3.py"
+        ],
+        "author": "sanguinedab",
+        "updated_at": "2026-11-22T13:55:05.558Z",
+        "hash": "29217d6d9534b3840a2ef639302170d16e0766700c64506a38f2a6e28f311f6c"
+    },
+    "java-rpg-pokemon": {
+        "path": "public/articles/java-rpg-pokemon/java-rpg-pokemon.md",
+        "title": "Java 实现 RPG 游戏（mini 版宝可梦）",
+        "created_at": "2020-08-09",
+        "summary": "大二暑期的 Java 课程设计：用 Swing 做界面、用回合制还原 mini 版宝可梦，记录角色基类、战斗与结算的实现过程。",
+        "draft": false,
+        "tags": [
+            "Java",
+            "Swing",
+            "课程设计"
+        ],
+        "author": "sanguinedab",
+        "updated_at": "2026-11-22T13:55:05.556Z",
+        "hash": "92a470fff23fca1a3efe190aad18241f72fa12443e26b198483ada4a64d951ad"
+    }
+}
