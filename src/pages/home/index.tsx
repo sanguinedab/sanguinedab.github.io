@@ -16,7 +16,7 @@ interface SectionProps {
 
 const sectionComponents: Record<string, React.ComponentType<SectionProps>> = {
   Introduction: IntroductionSection,
-  Experience: ExperienceSection,
+  ...(import.meta.env.DEV ? { Experience: ExperienceSection } : {}),
   Publications: PublicationsSection,
   Projects: ProjectsSection,
   Talks: TalksSection,
@@ -31,6 +31,8 @@ export default function HomePage() {
     <div className="flex flex-1 flex-col items-center gap-24 my-4">
       {homepage.sections.map((section) => {
         if (!section.enabled) return null;
+        // 教育/工作经历只在本地展示，线上版本不输出
+        if (section.name === "Experience" && !import.meta.env.DEV) return null;
         const SectionComponent = sectionComponents[section.name];
         return (
           <div key={section.name} className="w-full max-w-5xl px-2 md:px-8">

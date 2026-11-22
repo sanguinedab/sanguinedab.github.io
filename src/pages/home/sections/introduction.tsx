@@ -75,12 +75,14 @@ function ProfileCard() {
           </div>
         </TooltipProvider>
 
-        <Button asChild variant="outline" size="sm" className="gap-1.5">
-          <Link to="/resume">
-            <FaFileLines className="h-3.5 w-3.5" />
-            简历 · 导出 PDF
-          </Link>
-        </Button>
+        {import.meta.env.DEV ? (
+          <Button asChild variant="outline" size="sm" className="gap-1.5">
+            <Link to="/resume">
+              <FaFileLines className="h-3.5 w-3.5" />
+              简历 · 导出 PDF
+            </Link>
+          </Button>
+        ) : null}
       </div>
     </div>
   );

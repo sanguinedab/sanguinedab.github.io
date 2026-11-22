@@ -15,7 +15,10 @@ const PublicationsPage = loadLazy(() => import("@/pages/publications"));
 const ArticlesPage = loadLazy(() => import("@/pages/articles"));
 const ArticlePage = loadLazy(() => import("@/pages/articles/page"));
 const NotFoundPage = loadLazy(() => import("@/pages/notfound"));
-const ResumePage = loadLazy(() => import("@/pages/resume"));
+// 简历只在本地开发时可用，线上构建不包含该页面
+const ResumePage = import.meta.env.DEV
+  ? loadLazy(() => import("@/pages/resume"))
+  : null;
 
 export default function App() {
   useGlobalMeta();
@@ -25,7 +28,9 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <Routes>
-          <Route path="/resume" element={<ResumePage />} />
+          {import.meta.env.DEV && ResumePage ? (
+            <Route path="/resume" element={<ResumePage />} />
+          ) : null}
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="projects" element={<ProjectsPage />} />

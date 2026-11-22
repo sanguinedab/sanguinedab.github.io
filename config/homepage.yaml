@@ -14,7 +14,7 @@ homepage:
 
     - name: Experience
       variant: default
-      enabled: false # 教育/工作经历只放在可编辑的简历里，不在公开首页展示
+      enabled: true # 仅本地开发展示，线上构建会移除
 
     - name: Publications
       variant: default
