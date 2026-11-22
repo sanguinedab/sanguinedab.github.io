@@ -4,7 +4,7 @@ export const profile = {
   name: `sanguinedab`,
   headline: `服务端工程师 · DevOps · AI Agent`,
   email: `sanguinedab@gmail.com`,
-  location: `福建`,
+  location: `福建 · 中国`,
   profileImage: `https://github.com/sanguinedab.png`,
   links: [
     {
