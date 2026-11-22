@@ -28,6 +28,7 @@ import { projectDetails } from "@/data/projectDetails";
 import { skills } from "@/data/skills";
 import { workExperience } from "@/data/workExperience";
 import { personalProjects, workProjects } from "@/data/workProjects";
+import "./resume.css";
 
 const CONTACTS = [
   { icon: FaPhone, text: "138 0000 0000" },
